@@ -1,0 +1,5 @@
+huh, but you have never had that issue, before, did i select the wrong trust for this workspace? How did I redo that? It says this is trusted in the config.toml
+
+---
+
+Try the commit again.
