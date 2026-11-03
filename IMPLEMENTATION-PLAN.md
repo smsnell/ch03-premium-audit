@@ -1,6 +1,6 @@
 # Implementation plan
 
-Status: owner approved the revised plan, P1–P7 as provisional treatments, and the draft-output contract on 2026-11-03. Authorized scope: complete Gate 1, proceed through Gate 2 if checks pass, and stop for owner review or material blockers. This approval does not resolve employer open items or unknown owner amounts. Gates 1–2 accepted by owner. Gate 3 fresh six-employer draft outputs and reuse checks completed; stopped for owner review before Gate 4. See `docs/gate1-verification.md`, `docs/gate2-verification.md`, and `docs/gate3-verification.md`.
+Status: owner approved the revised plan, P1–P7 as provisional treatments, and the draft-output contract on 2026-11-03. Gates 1–3 are accepted for progression. G3 Complete was pushed as `3a39077`; Gate 4 integrated review and bounded fixes are accepted by the owner, with the final question-generator corrections and 45 passing regressions, authorized for G4 Complete. See `docs/gate4-verification.md` for results and the final revision capture limitation. This approval does not resolve employer open items or unknown owner amounts. No audit is signed off.
 
 ## Scope and evidence
 

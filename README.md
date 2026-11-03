@@ -1,6 +1,6 @@
 # Class Code and Premium Audit Assistant
 
-Reusable, agent-guided payroll classification for Linden Shore Mutual. Uses the company's guide and auditor decisions; does not set rates or quote premiums. Current scope: Gate 3 draft deliverables and verification; Gate 4 integrated completion review requires owner acceptance.
+Reusable, agent-guided payroll classification for Linden Shore Mutual. Uses the company's guide and auditor decisions; does not set rates or quote premiums. Current scope: Gate 4 software/package accepted with final question regressions passing; completion verification is in `docs/gate4-verification.md`. Software acceptance remains separate from audit sign-off.
 
 ## Setup
 
@@ -31,9 +31,9 @@ python3 skills/class-code-assistant/scripts/audit.py --case path/to/employer.jso
 python3 skills/class-code-assistant/scripts/audit.py --bundle path/to/all-six.json --output-dir .runs/replay-six
 ```
 
-The bundle is a JSON list of normalized cases or an object with a `cases` list. `--case` may also be repeated. Use a new output directory. The helper verifies source fingerprints and input contracts before generating `codes/<slug>.csv`, `audit-report.md`, `audit-questions.md`, and `ledgers/<slug>.json`. Replaying saved cases verifies arithmetic; it does not satisfy fresh retrieval for a new audit run.
+The bundle is a JSON list of normalized cases or an object with a `cases` list. `--case` may also be repeated. Use a new output directory. The helper verifies source fingerprints and input contracts before generating `codes/<slug>.csv`, `audit-report.md`, `audit-questions.md`, `internal-decisions.md`, and `ledgers/<slug>.json`. Replaying saved cases verifies arithmetic; it does not satisfy fresh retrieval for a new audit run.
 
-All CSVs must travel with the draft report/questions. Owner approval to implement provisional P1–P7 treatments is not employer confirmation. Missing owner remuneration remains unknown, never zero; calculations cannot grant final audit approval.
+All CSVs must travel with the draft report/questions and linked internal decisions/ledgers. Employer questions ask for facts; internal decisions hold rule interpretation and treatment approvals. Confirmations must identify the employer, issue and confirmation kind, and cannot change another case or automatically approve an audit. Owner approval to implement provisional P1–P7 treatments is not employer confirmation. Missing owner remuneration remains unknown, never zero; calculations cannot grant final audit approval.
 
 ## Verification
 
@@ -41,7 +41,7 @@ All CSVs must travel with the draft report/questions. Owner approval to implemen
 python3 -m unittest discover -s tests -v
 ```
 
-Source checks and the requirements map are in `docs/gate1-verification.md`; Gate 2 results are in `docs/gate2-verification.md`. Gate 3 source/run results are in `docs/gate3-source-run.md`; new-employer and changed-source CLI checks are in `docs/gate3-reuse-checks.md`. Tests cover policy boundaries, evidence gaps, money reconciliation, draft status and case-specific evidence.
+Source checks and the requirements map are in `docs/gate1-verification.md`; Gate 2 results are in `docs/gate2-verification.md`. Gate 3 source/run results are in `docs/gate3-source-run.md`; new-employer and changed-source CLI checks are in `docs/gate3-reuse-checks.md`. Tests cover policy boundaries, evidence gaps, money reconciliation, draft status and case-specific evidence. The integrated requirements review, fixes, confirmation isolation and consolidation checks are in `docs/gate4-verification.md`.
 
 The six-case draft package is in `deliverables/`. After the fresh agent retrieval and normalization, its calculation command is:
 

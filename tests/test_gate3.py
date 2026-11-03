@@ -77,7 +77,7 @@ class Gate3ReuseTests(unittest.TestCase):
 
     def package(self, output, expected):
         self.assertEqual({'audit-report.md', 'audit-questions.md', 'codes/' + SLUG + '.csv',
-                          'ledgers/' + SLUG + '.json'},
+                          'ledgers/' + SLUG + '.json', 'internal-decisions.md'},
                          {str(p.relative_to(output)) for p in output.rglob('*') if p.is_file()})
         with (output / 'codes' / (SLUG + '.csv')).open(newline='') as stream:
             reader = csv.DictReader(stream)
@@ -106,10 +106,11 @@ class Gate3ReuseTests(unittest.TestCase):
         questions = (output / 'audit-questions.md').read_text()
         self.assertIn('unknown (not zero)', report)
         self.assertIn('Elena Sato', report)
-        self.assertIn('Resolve JS-O03-owner-election', questions)
+        self.assertIn('JS-O03-owner-election', questions)
+        internal = (output / 'internal-decisions.md').read_text()
         for source in self.case['sources']:
-            self.assertIn('Confirm record ' + source['id'], questions)
-            self.assertIn(source['sha256'], report)
+            self.assertIn(source['id'], internal if source['id'] == 'guide' else questions)
+            self.assertEqual(source['sha256'], next(s['sha256'] for s in ledger['sources'] if s['id'] == source['id']))
 
     def test_changed_source_stale_hash_fails_then_fresh_normalization_changes_allocation(self):
         original = self.base / 'original'
@@ -192,13 +193,14 @@ class Gate3ReuseTests(unittest.TestCase):
         self.assertEqual(0, result.returncode, result.stderr)
         ledger = self.package(output, {'C-110': '18234.56', 'E-510': '72819.43'})
         self.assertEqual([note], ledger['case_notes'])
-        ref = SLUG + '-evidence-1 / Owen Vale site log'
         report = (output / 'audit-report.md').read_text()
         questions = (output / 'audit-questions.md').read_text()
-        self.assertIn(ref + ': ' + note['detail'], report)
-        self.assertIn(ref + ': ' + note['question'], questions)
-        self.assertIn('Sources: signin.', report)
-        self.assertIn('Confirm supporting records: signin.', questions)
+        self.assertIn(SLUG + '-evidence-1', report)
+        self.assertIn(note['detail'], report)
+        self.assertIn(SLUG + '-evidence-1', questions)
+        self.assertIn(note['subject'], questions)
+        self.assertIn('signin', report)
+        self.assertIn('signin', questions)
         for field in ('subject', 'detail', 'question', 'evidence'):
             with self.subTest(field=field):
                 bad = deepcopy(self.case)

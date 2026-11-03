@@ -1,17 +1,19 @@
 #!/usr/bin/env python3
 """Deterministic allocation from evidence-backed normalized JSON; no source prose execution."""
 import argparse
-import csv
 from datetime import date, timedelta, datetime
 from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
 import hashlib
-import io
 import json
 from pathlib import Path
 import re
 import sys
 import tempfile
 import os
+
+# Support both the CLI and file-based Skill/test loading.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from reporting import render
 
 CENT = Decimal('0.01')
 ZERO = Decimal('0.00')
@@ -77,6 +79,7 @@ class Audit:
         self.sources = {}
         for source in case['sources']:
             sid = source['id']
+            require(source.get('audience', 'employer') in ('employer', 'internal'), 'Invalid source audience')
             require(sid not in self.sources, 'Duplicate source id: ' + sid)
             require(source['url'] and source['retrieved_at'], 'Source URL/retrieval time required')
             try:
@@ -100,6 +103,7 @@ class Audit:
             require(bool(rule['citation'].strip()), 'Rule citation required')
         self.entries, self.adjustments, self.issues, self.decisions = [], [], [], []
         self.people = {}
+        self.person_codes = {}
         self.total_baseline = ZERO
 
     def evidence(self, refs):
@@ -237,6 +241,7 @@ class Audit:
                 else:
                     require(type(p.get('field_work')) is bool, 'Included owner field_work required')
                     if p['field_work']:
+                        require(code != 'C-110', 'Field-working owner requires a supported trade code')
                         pay = Decimal('63700.00')
                         reason = 'Included working owner with field duties: fixed period basis'
                     else:
@@ -247,6 +252,7 @@ class Audit:
             if p.get('exception_issue'):
                 require(any(i['id'] == p['exception_issue'] for i in self.issues), 'Exception requires explicit open issue')
                 reason += '; provisional exception ' + p['exception_issue']
+            self.person_codes[p['id']] = {code} if pay > 0 else set()
             if pay > 0:
                 self.add(p['name'], code, pay, refs, reason)
             self.adjust(p['name'], p['_before'], p['_pay'] or ZERO, {code: pay}, refs, reason)
@@ -276,12 +282,15 @@ class Audit:
             self.adjust(p['name'], p['_before'], p['_pay'], {code: p['_pay']}, refs, reason)
             self.decisions.append(dict(subject=p['name'], reason=reason, evidence=refs))
         for confirmation in c.get('confirmations', []):
+            require(confirmation.get('case_slug') == c['slug'], 'Confirmation case_slug must match this employer')
+            require(confirmation.get('kind') in ('employer_fact', 'internal_decision'),
+                    'Confirmation kind must distinguish employer_fact from internal_decision')
             matches = [i for i in self.issues if i['id'] == confirmation['issue_id']]
             require(len(matches) == 1, 'Confirmation must identify exactly one existing issue')
             self.evidence(confirmation['evidence'])
             require(all(confirmation.get(key) for key in ('by', 'at', 'scope')), 'Confirmation details required')
             day(confirmation['at'][:10])
-            matches[0]['confirmations'].append(confirmation)
+            matches[0]['confirmations'].append(dict(confirmation))
             matches[0]['status'] = 'confirmation_recorded'
         totals = {}
         for entry in self.entries:
@@ -297,6 +306,9 @@ class Audit:
                         for key in ('subject', 'detail', 'question')), 'Case evidence requires subject, detail and question')
             notes.append(dict(subject=note['subject'], detail=note['detail'],
                               question=note['question'], evidence=self.evidence(note['evidence'])))
+            if 'audience' in note:
+                require(note['audience'] in ('employer', 'internal'), 'Invalid note audience')
+                notes[-1]['audience'] = note['audience']
         different = {k: v for k, v in totals.items() if v} != {k: v for k, v in reported.items() if v}
         return dict(slug=c['slug'], employer=c['employer'], audit_start=str(self.start), audit_end=str(self.end),
                     status='draft; final sign-off not established',
@@ -330,6 +342,7 @@ class Audit:
             refs += row['evidence']
             self.add(p['name'] + ' week ' + str(start), code, pay, row['evidence'] + self.policy('dispatcher'),
                      str(len(dates)) + ' unique ride days; whole week; independent of site sign-in')
+        self.person_codes[p['id']] = {key for key, value in after.items() if value > 0}
         require(total == p['_pay'], 'Weekly payroll does not reconcile to employee register: ' + p['name'])
         self.adjust(p['name'], p['_before'], p['_pay'], after, refs, 'Whole-week route-day rule')
         self.decisions.append(dict(subject=p['name'], reason='Weekly payroll reconciled; route days control', evidence=refs))
@@ -385,7 +398,13 @@ class Audit:
             days = row['days']
             require(type(days) is int and days >= 0, 'Allowance days must be nonnegative integer')
             require(type(row['documented_reimbursement']) is bool, 'Reimbursement basis must be explicit')
-            code = self.code(row.get('code', p['code']))
+            allocated = self.person_codes.get(p['id'], set())
+            if row.get('code') is not None:
+                code = self.code(row['code'])
+                refs += self.evidence(row.get('allocation_evidence'))
+            else:
+                require(len(allocated) == 1, 'Allowance allocation needs a unique calculated class or explicit allocation evidence')
+                code = self.code(next(iter(allocated)))
             if row['documented_reimbursement']:
                 refs += self.evidence(row.get('reimbursement_evidence'))
                 excess = ZERO
@@ -418,81 +437,6 @@ class Audit:
         return ('F-720' if qualifies else 'F-710'), refs, (
             'Catering receipts ' + fmt(catering) + ' / ' + fmt(gross) +
             (' at/above' if qualifies else ' below') + ' 40%; threshold applies to catering crew, no proportional wage split')
-
-
-def render(ledgers):
-    files = {}
-    report = ['# Draft audit report', '', 'Provisional allocations. CSVs must accompany this report and the questions. Final audit sign-off is not established. Retrieval timestamps are provenance, not proof of a fresh live run.', '']
-    questions = ['# Audit questions', '']
-    for ledger in ledgers:
-        slug = ledger['slug']
-        stream = io.StringIO(newline='')
-        writer = csv.writer(stream, lineterminator='\n')
-        writer.writerow(['class_code', 'payroll_allocated', 'rationale_ref'])
-        for code, amount in ledger['totals'].items():
-            writer.writerow([code, amount, ledger['rationale_refs'][code]])
-        files['codes/' + slug + '.csv'] = stream.getvalue()
-        files['ledgers/' + slug + '.json'] = json.dumps(ledger, indent=2, ensure_ascii=False) + '\n'
-        report += ['## ' + ledger['employer'], '', ledger['split_decision'].capitalize() + ' the reported payroll split; ' + ledger['status'] + '.', '',
-                   'Audit period: ' + ledger['audit_start'] + ' through ' + ledger['audit_end'] + '.', '',
-                   'Reported: ' + json.dumps(ledger['reported'], sort_keys=True) + '.', '',
-                   'Allocated: ' + json.dumps(ledger['totals'], sort_keys=True) + '.', '',
-                   'Known register ' + ledger['baseline'] + ' + net adjustments ' + ledger['net_adjustment'] +
-                   ' = allocated ' + fmt(sum((money(v) for v in ledger['totals'].values()), ZERO)) +
-                   '. Unknown owner amounts are excluded from this reconciliation and remain completeness gaps.', '']
-        for code in sorted(set(ledger['reported']) | set(ledger['totals'])):
-            before = money(ledger['reported'].get(code, '0.00'))
-            after = money(ledger['totals'].get(code, '0.00'))
-            report += ['- ' + code + ': reported ' + fmt(before) + '; allocated ' + fmt(after) +
-                       '; difference ' + fmt(after - before) + '.']
-        report += ['']
-        questions += ['## ' + ledger['employer'], '']
-        if ledger.get('case_notes'):
-            report += ['Case-specific evidence and proposed treatment:', '']
-        for number, note in enumerate(ledger.get('case_notes', []), 1):
-            ref = slug + '-evidence-' + str(number)
-            report += ['- ' + ref + ' / ' + note['subject'] + ': ' + note['detail'] +
-                       ' Sources: ' + ', '.join(note['evidence']) + '.']
-            questions += ['- ' + ref + ' / ' + note['subject'] + ': ' + note['question'] +
-                          ' Confirm supporting records: ' + ', '.join(note['evidence']) + '.']
-        report += ['']
-        for d in ledger['decisions']:
-            report += ['- ' + d['subject'] + ': ' + d['reason'] + '. Evidence: ' + ', '.join(d['evidence']) + '.']
-            questions += ['- Confirm ' + d['subject'] + ': ' + d['reason'] + '. Confirm the completeness and accuracy of ' + ', '.join(d['evidence']) + '.']
-        report += ['', 'Baseline allocations and adjustments:', '']
-        for a in ledger['adjustments']:
-            label = ('Baseline allocation (employee application code unspecified)' if a['kind'] == 'baseline_allocation'
-                     else 'Adjustment')
-            report += ['- ' + label + ' for ' + a['subject'] + ': ' + json.dumps(a['before']) + ' → ' + json.dumps(a['after']) +
-                       '; net ' + a['net'] + '. ' + a['reason'] + '. Evidence: ' + ', '.join(a['evidence']) + '.']
-            questions += ['- Confirm ' + label.lower() + ' ' + a['id'] + ' for ' + a['subject'] + ': ' + json.dumps(a['before']) +
-                          ' to ' + json.dumps(a['after']) + ', net ' + a['net'] + '; evidence ' + ', '.join(a['evidence']) + '.']
-        if not ledger['adjustments']:
-            report += ['- None to known payroll.']
-        report += ['', 'Open treatments and confirmation records:', '']
-        for issue in ledger['issues']:
-            amount = 'unknown (not zero)' if issue['amount'] is None else issue['amount']
-            alt = 'unknown' if issue['alternative_amount'] is None else issue['alternative_amount']
-            report += ['- ' + issue['id'] + ' / ' + issue['subject'] + ': ' + issue['treatment'] +
-                       ' Amount: ' + amount + '; alternative: ' + alt + '; status: ' + issue['status'] +
-                       '. Evidence: ' + ', '.join(issue['evidence']) + '.']
-            questions += ['- Resolve ' + issue['id'] + ' for ' + issue['subject'] + ': ' + issue['treatment'] +
-                          ' Confirm the treatment and supporting evidence ' + ', '.join(issue['evidence']) + '.']
-            for confirmation in issue['confirmations']:
-                report += ['  Confirmation record: ' + json.dumps(confirmation, ensure_ascii=False) + '. Scope is limited to this issue; no automatic audit approval.']
-        report += ['', 'Rule provenance:', '']
-        for key, rule in ledger['rule_refs'].items():
-            report += ['- ' + key + ': ' + rule['citation'] + '; sources ' + ', '.join(rule['sources']) + '.']
-        report += ['', 'Source manifest (fingerprints verified locally):', '']
-        for source in ledger['sources']:
-            report += ['- ' + source['id'] + ': ' + source['path'] + '; ' + source['url'] +
-                       '; retrieved ' + source['retrieved_at'] + '; SHA-256 ' + source['sha256'] + '.']
-            questions += ['- Confirm record ' + source['id'] + ' (' + source['path'] + ') is authentic, complete and applicable to this audit period; identify corrections or missing records.']
-        report += ['']
-        questions += ['']
-    files['audit-report.md'] = '\n'.join(report) + '\n'
-    files['audit-questions.md'] = '\n'.join(questions) + '\n'
-    return files
 
 
 def main(argv=None):

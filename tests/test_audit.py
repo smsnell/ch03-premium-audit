@@ -185,7 +185,7 @@ class AuditTests(unittest.TestCase):
                                                  ('390.00', 0, False, '390.00'), ('390.00', 0, True, '0.00')]:
             with self.subTest(amount=amount, days=days, documented=documented):
                 c = self.case()
-                row = dict(id='travel', person='a', code='C-110', amount=amount, days=days,
+                row = dict(id='travel', person='a', amount=amount, days=days,
                            documented_reimbursement=documented, evidence=['records'])
                 if documented:
                     row['reimbursement_evidence'] = ['records']
@@ -237,7 +237,7 @@ class AuditTests(unittest.TestCase):
     def test_confirmation_isolated_never_approves_case_or_rewrites_payroll(self):
         c = self.case()
         c['open_issues'] = [dict(id=key, subject='Synthetic person a', treatment='Proposed exception', amount=None, evidence=['records']) for key in ('P1', 'P2')]
-        c['confirmations'] = [dict(issue_id='P1', by='Synthetic reviewer', at='2026-11-03', scope='Duties only', evidence=['records'])]
+        c['confirmations'] = [dict(case_slug=c['slug'], issue_id='P1', kind='employer_fact', by='Synthetic reviewer', at='2026-11-03', scope='Duties only', evidence=['records'])]
         result = self.run_case(c)
         self.assertEqual(['confirmation_recorded', 'open'], [i['status'] for i in result['issues']])
         self.assertIn('draft', result['status'])
@@ -332,7 +332,8 @@ class AuditTests(unittest.TestCase):
         for item in result['adjustments']:
             self.assertIn(item['id'], files['audit-questions.md'])
         for source in result['sources']:
-            self.assertIn('Confirm record ' + source['id'], files['audit-questions.md'])
+            target = files['internal-decisions.md'] if source['id'] == 'guide' else files['audit-questions.md']
+            self.assertIn(source['id'], target)
 
     def test_cli_one_bundle_missing_input_preserves_previous_and_new_directory(self):
         path = self.base / 'case.json'
