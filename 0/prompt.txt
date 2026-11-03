@@ -1,0 +1,13 @@
+Read AGENTS.md, ORCHESTRATION.md, REQUIREMENTS.md, and interviews/. Examine the sources referenced in the interview. Identify unknowns, ambiguities, and risks. Propose a bounded implementation plan with verification gates and model recommendations. Consolidate essential stakeholder questions into 1-2 follow-ups maximum. Planning phase only, no implemenation yet. Stop for my review.
+
+---
+
+Package this as IMPLEMENTATION-PLAN.md, and start a PROJECT-TRACKER.md file that keeps track cumulative agent time, and tokens, updated when a push occurs, with an estimate of 4 hours, and 50 million tokens respectfully. The tracker can also keep track of project process/current context, but keep it concise as a rule.
+
+---
+
+Review interview-2.md for the new information near the end, it should resolve most of the questions we encountered. Compare with sources and the existing plan. Update confirmed rules and verification gates. For unresolved cases, propose evidence-backed treatments, provisional output handling, and the two priority employer calls. Clearly distinguish confirmed decisions from assumptions requiring approval. Update the plan, but do not implement yet. Stop for my review.
+
+---
+
+Commit as "Planning Complete", and push to main. Then proceed. I approve the revised plan, P1-P7 as provisional treatments, and the draft-output contract. Complete Gate 1; if its checks pass, proceed through Gate 2. Entire should update at the push, verifying session capture is active. Preserve unresolved items and unknown owner amounts. Stop for material blockers or at Gate 2 completion, with verification results for my review.
