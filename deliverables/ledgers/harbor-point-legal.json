@@ -1,0 +1,491 @@
+{
+  "slug": "harbor-point-legal",
+  "employer": "Harbor Point Legal",
+  "audit_start": "2025-07-07",
+  "audit_end": "2026-07-05",
+  "status": "draft; final sign-off not established",
+  "split_decision": "provisionally accept",
+  "reported": {
+    "C-110": "425148.16"
+  },
+  "totals": {
+    "C-110": "425148.16"
+  },
+  "rationale_refs": {
+    "C-110": "CG-04",
+    "R-310": "CG-11",
+    "R-320": "CG-12",
+    "L-620": "CG-13",
+    "H-420": "CG-15",
+    "E-510": "CG-21",
+    "M-830": "CG-22",
+    "T-610": "CG-31",
+    "G-950": "CG-35",
+    "F-710": "CG-41",
+    "F-720": "CG-42",
+    "N-910": "CG-51"
+  },
+  "baseline": "425148.16",
+  "net_adjustment": "0.00",
+  "governing_before_office": {},
+  "entries": [
+    {
+      "subject": "Marcus Adeyemi",
+      "code": "C-110",
+      "amount": "128400.00",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ],
+      "reason": "Explicit evidence-backed work mapping"
+    },
+    {
+      "subject": "Julia Fenwick",
+      "code": "C-110",
+      "amount": "121750.00",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ],
+      "reason": "Explicit evidence-backed work mapping"
+    },
+    {
+      "subject": "Tomas Reyes",
+      "code": "C-110",
+      "amount": "64212.48",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide",
+        "site-signin-log.csv",
+        "interview-2"
+      ],
+      "reason": "Explicit evidence-backed work mapping; provisional exception P1-tomas-legal-visits"
+    },
+    {
+      "subject": "Ellen Short",
+      "code": "C-110",
+      "amount": "51880.16",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ],
+      "reason": "Explicit evidence-backed work mapping"
+    },
+    {
+      "subject": "Gwen Talbot",
+      "code": "C-110",
+      "amount": "58905.52",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ],
+      "reason": "Explicit evidence-backed work mapping"
+    }
+  ],
+  "adjustments": [
+    {
+      "id": "adjustment-1",
+      "subject": "Marcus Adeyemi",
+      "before": {
+        "code not specified in application": "128400.00"
+      },
+      "after": {
+        "C-110": "128400.00"
+      },
+      "kind": "baseline_allocation",
+      "net": "0.00",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ],
+      "reason": "Explicit evidence-backed work mapping"
+    },
+    {
+      "id": "adjustment-2",
+      "subject": "Julia Fenwick",
+      "before": {
+        "code not specified in application": "121750.00"
+      },
+      "after": {
+        "C-110": "121750.00"
+      },
+      "kind": "baseline_allocation",
+      "net": "0.00",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ],
+      "reason": "Explicit evidence-backed work mapping"
+    },
+    {
+      "id": "adjustment-3",
+      "subject": "Tomas Reyes",
+      "before": {
+        "code not specified in application": "64212.48"
+      },
+      "after": {
+        "C-110": "64212.48"
+      },
+      "kind": "baseline_allocation",
+      "net": "0.00",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide",
+        "site-signin-log.csv",
+        "interview-2"
+      ],
+      "reason": "Explicit evidence-backed work mapping; provisional exception P1-tomas-legal-visits"
+    },
+    {
+      "id": "adjustment-4",
+      "subject": "Ellen Short",
+      "before": {
+        "code not specified in application": "51880.16"
+      },
+      "after": {
+        "C-110": "51880.16"
+      },
+      "kind": "baseline_allocation",
+      "net": "0.00",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ],
+      "reason": "Explicit evidence-backed work mapping"
+    },
+    {
+      "id": "adjustment-5",
+      "subject": "Gwen Talbot",
+      "before": {
+        "code not specified in application": "58905.52"
+      },
+      "after": {
+        "C-110": "58905.52"
+      },
+      "kind": "baseline_allocation",
+      "net": "0.00",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ],
+      "reason": "Explicit evidence-backed work mapping"
+    }
+  ],
+  "decisions": [
+    {
+      "subject": "Marcus Adeyemi",
+      "reason": "Explicit evidence-backed work mapping",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Julia Fenwick",
+      "reason": "Explicit evidence-backed work mapping",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Tomas Reyes",
+      "reason": "Explicit evidence-backed work mapping; provisional exception P1-tomas-legal-visits",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide",
+        "site-signin-log.csv",
+        "interview-2"
+      ]
+    },
+    {
+      "subject": "Ellen Short",
+      "reason": "Explicit evidence-backed work mapping",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Gwen Talbot",
+      "reason": "Explicit evidence-backed work mapping",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Catherine Harbor",
+      "reason": "Unquantified completeness gap",
+      "evidence": [
+        "business-description.md",
+        "guide",
+        "interview-2"
+      ]
+    }
+  ],
+  "issues": [
+    {
+      "id": "P1-tomas-legal-visits",
+      "subject": "Tomas Reyes",
+      "treatment": "Retain 64212.48 C-110 as a proposed professional-duty exception. Six real visits remain counted; contractor office transfer has no defined field destination for this law office. Confirm legal-support work and acceptance despite CG-04 office wording.",
+      "evidence": [
+        "site-signin-log.csv",
+        "field-notes.md",
+        "interview-2",
+        "guide"
+      ],
+      "amount": "64212.48",
+      "alternative_amount": null,
+      "status": "open",
+      "confirmations": []
+    },
+    {
+      "id": "HP-owner-owner-election",
+      "subject": "Catherine Harbor",
+      "treatment": "P4: retain reported omission provisionally; obtain election, effective dates, duties and remuneration. Unknown amount is not verified zero.",
+      "evidence": [
+        "business-description.md",
+        "guide",
+        "interview-2"
+      ],
+      "amount": null,
+      "alternative_amount": null,
+      "status": "open",
+      "confirmations": []
+    }
+  ],
+  "case_notes": [
+    {
+      "subject": "Source timing and confirmation status",
+      "detail": "Audit period is July 7, 2025 through July 5, 2026. The field-note visit is after audit end and supplies duty/context evidence; it is not an additional in-period site or ride day. Application code figures are aggregate only; individual application classifications are unspecified. No employer confirmation has been received; source statements and implementation approval are not case confirmation.",
+      "question": "Confirm the application, audit dates, payroll completeness and whether the post-period field-note duties also describe this audit period; identify any omitted person, payment or record.",
+      "evidence": [
+        "business-description.md",
+        "application.md",
+        "field-notes.md",
+        "interview-2"
+      ]
+    },
+    {
+      "subject": "Marcus Adeyemi / HP-E01",
+      "detail": "payroll-register.csv line 2: wages 128400.00; Legal professional duties in the described law office; field notes state court appearances/closings are not job sites and no staff perform physical field work. C-110 under CG-04, subject to confirming off-office professional duties.",
+      "question": "Confirm Marcus Adeyemi (HP-E01) earned 128400.00 and performed the described duties in the audit period: Legal professional duties in the described law office; field notes state court appearances/closings are not job sites and no staff perform physical field work. C-110 under CG-04, subject to confirming off-office professional duties.",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Julia Fenwick / HP-E02",
+      "detail": "payroll-register.csv line 3: wages 121750.00; Legal professional duties in the described law office; field notes distinguish courts/closings from jobs and establish no physical field work. C-110 under CG-04, subject to confirming off-office professional duties.",
+      "question": "Confirm Julia Fenwick (HP-E02) earned 121750.00 and performed the described duties in the audit period: Legal professional duties in the described law office; field notes distinguish courts/closings from jobs and establish no physical field work. C-110 under CG-04, subject to confirming off-office professional duties.",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Tomas Reyes / HP-E03",
+      "detail": "payroll-register.csv line 4: wages 64212.48; Legal support, supplemented by the six log entries and Nadia’s 12:26 AM testimony: observed an expert inspection and took litigation notes/photos, not construction. P1 retains C-110 despite office-confined wording; no field trade has been established.",
+      "question": "Confirm Tomas Reyes (HP-E03) earned 64212.48 and performed the described duties in the audit period: Legal support, supplemented by the six log entries and Nadia’s 12:26 AM testimony: observed an expert inspection and took litigation notes/photos, not construction. P1 retains C-110 despite office-confined wording; no field trade has been established.",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Ellen Short / HP-E04",
+      "detail": "payroll-register.csv line 5: wages 51880.16; Secretarial/correspondence work in the described law office, with field notes establishing no physical field work and no employee sign-ins; CG-04 provisional mapping requires duty confirmation.",
+      "question": "Confirm Ellen Short (HP-E04) earned 51880.16 and performed the described duties in the audit period: Secretarial/correspondence work in the described law office, with field notes establishing no physical field work and no employee sign-ins; CG-04 provisional mapping requires duty confirmation.",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Gwen Talbot / HP-E05",
+      "detail": "payroll-register.csv line 6: wages 58905.52; Management/administration of the described law office, with field notes establishing no physical field work and no employee sign-ins; CG-04 provisional mapping requires duty confirmation.",
+      "question": "Confirm Gwen Talbot (HP-E05) earned 58905.52 and performed the described duties in the audit period: Management/administration of the described law office, with field notes establishing no physical field work and no employee sign-ins; CG-04 provisional mapping requires duty confirmation.",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Tomas Reyes / six visits and identity mapping",
+      "detail": "site-signin-log.csv lines 2–7 list HP-E03 on 2025-09-16, 2025-10-22, 2025-12-09, 2026-01-28, 2026-03-04, 2026-04-15 at Sallowmere Court Condominiums. Nadia at 12:26 AM identifies inspection observation and litigation notes/photos. The transcript says “Thomas” and a phonetic site variant; context maps these to the unique HP-E03 case, without editing the original transcript. This is not roofing/construction work. Provisionally accept the application’s 425148.16 C-110 employee split; the owner exclusion and professional office exception remain open.",
+      "question": "Confirm Tomas Reyes is the person discussed as “Thomas”, all six dates and legal observation/notes/photos duties, and acceptance of 64212.48 C-110 despite off-office visits; confirm no construction duties or missing visits.",
+      "evidence": [
+        "site-signin-log.csv",
+        "interview-2",
+        "application.md",
+        "payroll-register.csv",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Catherine Harbor / reported owner exclusion",
+      "detail": "business-description.md reports an election and omission from the register, but no election form/effective dates are among the freshly listed files. Retain the reported omission only as P4 provisional completeness gap. Pay, duties, field-work status and any additional exposure remain unknown, not zero; 63700.00 is not automatically assigned to an owner of unknown duties. CG-05-first precedence against the working-owner rule is proposed, not confirmed.",
+      "question": "Provide Catherine Harbor's election and dates covering the entire audit period, confirm duties/remuneration if exclusion fails, and confirm the proposed election-first precedence; final sign-off remains blocked.",
+      "evidence": [
+        "business-description.md",
+        "guide",
+        "interview-2"
+      ]
+    }
+  ],
+  "rule_refs": {
+    "owner": {
+      "sources": [
+        "guide",
+        "interview-2"
+      ],
+      "citation": "Guide CG-05 and interview 2 11:28 PM, 12:32 AM. Included field owner fixed basis 63700.00; election precedence and missing elections unresolved P4."
+    },
+    "office": {
+      "sources": [
+        "guide",
+        "interview-2"
+      ],
+      "citation": "Interview 2 11:19–11:20 PM and 12:26–12:28 AM: contractor office rule, 4/5 day boundary; whole pay. CG-04 code wording."
+    },
+    "governing": {
+      "sources": [
+        "guide",
+        "interview-2"
+      ],
+      "citation": "Interview 2 12:27–12:28 AM: largest field payroll. P2: corrected field/addition totals before office transfer, unique positive-time dates; ordering remains open."
+    }
+  },
+  "sources": [
+    {
+      "id": "site-signin-log.csv",
+      "drive_id": "1XYS_ajsSQMqxqgKLGtI8t9yZE3d4BSAp",
+      "url": "https://drive.google.com/file/d/1XYS_ajsSQMqxqgKLGtI8t9yZE3d4BSAp/view?usp=drivesdk",
+      "path": "/home/mike/ch03-premium-audit/.runs/gate3/sources/harbor-point-legal/site-signin-log.csv",
+      "retrieved_at": "2026-11-03T06:24:16.141Z",
+      "modified_at": "2026-10-22T14:24:07.747Z",
+      "byte_count": 436,
+      "sha256": "27674afc3b226422543bc722a1148791f9f5a54e063acb9bf46af6a46f6fe461",
+      "mime_type": "text/csv",
+      "data_rows": 6,
+      "columns": [
+        "date",
+        "employee_id",
+        "name",
+        "site",
+        "signed_in_at"
+      ]
+    },
+    {
+      "id": "payroll-register.csv",
+      "drive_id": "13UaL8k95JkOjoi18ySAZoU5T5qaGb6sF",
+      "url": "https://drive.google.com/file/d/13UaL8k95JkOjoi18ySAZoU5T5qaGb6sF/view?usp=drivesdk",
+      "path": "/home/mike/ch03-premium-audit/.runs/gate3/sources/harbor-point-legal/payroll-register.csv",
+      "retrieved_at": "2026-11-03T06:24:16.141Z",
+      "modified_at": "2026-10-22T14:24:05.488Z",
+      "byte_count": 263,
+      "sha256": "d7473ff1ddf6a2d2dbd4a09925d0cd3afbdf8ca5ad4e59d0d0c4755fd01f60bb",
+      "mime_type": "text/csv",
+      "data_rows": 5,
+      "columns": [
+        "employee_id",
+        "name",
+        "position",
+        "wages_paid"
+      ]
+    },
+    {
+      "id": "field-notes.md",
+      "drive_id": "13LHYTQQPRLHv41732VtJ_wlPP-_d9sPM",
+      "url": "https://drive.google.com/file/d/13LHYTQQPRLHv41732VtJ_wlPP-_d9sPM/view?usp=drivesdk",
+      "path": "/home/mike/ch03-premium-audit/.runs/gate3/sources/harbor-point-legal/field-notes.md",
+      "retrieved_at": "2026-11-03T06:24:16.141Z",
+      "modified_at": "2026-10-22T14:24:03.789Z",
+      "byte_count": 372,
+      "sha256": "79182f054841680bbd9878653043af29b0c10f4d866cc2339a62572cd9f69cee",
+      "mime_type": "text/markdown"
+    },
+    {
+      "id": "business-description.md",
+      "drive_id": "1mjpCGvogGUDfL-Jbo1bQhZZ1R6qtV4p7",
+      "url": "https://drive.google.com/file/d/1mjpCGvogGUDfL-Jbo1bQhZZ1R6qtV4p7/view?usp=drivesdk",
+      "path": "/home/mike/ch03-premium-audit/.runs/gate3/sources/harbor-point-legal/business-description.md",
+      "retrieved_at": "2026-11-03T06:24:16.141Z",
+      "modified_at": "2026-10-22T14:24:02.145Z",
+      "byte_count": 414,
+      "sha256": "e2836b532e7aae28f3a9d2bf755f57240dcfefeb7ccb9a81302c6403277ecf20",
+      "mime_type": "text/markdown"
+    },
+    {
+      "id": "application.md",
+      "drive_id": "1CpRtyJghao9DSkFNbhLVaRHIwFiuI_ai",
+      "url": "https://drive.google.com/file/d/1CpRtyJghao9DSkFNbhLVaRHIwFiuI_ai/view?usp=drivesdk",
+      "path": "/home/mike/ch03-premium-audit/.runs/gate3/sources/harbor-point-legal/application.md",
+      "retrieved_at": "2026-11-03T06:24:16.141Z",
+      "modified_at": "2026-10-22T14:24:00.545Z",
+      "byte_count": 274,
+      "sha256": "bfe89a3e1b01cceda79c992cda0e9fae9aef9148311b0d353bff4fb4fa1d18f1",
+      "mime_type": "text/markdown"
+    },
+    {
+      "id": "guide",
+      "drive_id": "1L5MxLny7erhjSwCvl43DTSmAt3wgv22j",
+      "url": "https://drive.google.com/file/d/1L5MxLny7erhjSwCvl43DTSmAt3wgv22j/view?usp=drivesdk",
+      "path": "/home/mike/ch03-premium-audit/.runs/gate3/sources/guide.md",
+      "retrieved_at": "2026-11-03T06:24:18.728Z",
+      "modified_at": "2026-10-22T14:23:33.232Z",
+      "byte_count": 3555,
+      "sha256": "89480f691737a0e8a762a836b8412476e0ed9d0b37639eb898e2826771c1dba8",
+      "mime_type": "text/markdown"
+    },
+    {
+      "id": "interview-2",
+      "path": "/home/mike/ch03-premium-audit/interviews/interview-2.md",
+      "url": "local:interviews/interview-2.md",
+      "retrieved_at": "2026-11-03T06:28:07.754231+00:00",
+      "sha256": "69963d4e448a0a4f9fa2e327fd35bc184518c52b0c5c6986635614c5a59229b7"
+    }
+  ]
+}

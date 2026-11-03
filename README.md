@@ -1,6 +1,6 @@
 # Class Code and Premium Audit Assistant
 
-Reusable, agent-guided payroll classification for Linden Shore Mutual. Uses the company's guide and auditor decisions; does not set rates or quote premiums. Current scope: Gate 2 implementation and verification; the six-employer deliverable run remains Gate 3.
+Reusable, agent-guided payroll classification for Linden Shore Mutual. Uses the company's guide and auditor decisions; does not set rates or quote premiums. Current scope: Gate 3 draft deliverables and verification; Gate 4 integrated completion review requires owner acceptance.
 
 ## Setup
 
@@ -41,7 +41,15 @@ All CSVs must travel with the draft report/questions. Owner approval to implemen
 python3 -m unittest discover -s tests -v
 ```
 
-Source checks and the requirements map are in `docs/gate1-verification.md`; Gate 2 results are in `docs/gate2-verification.md`. Tests cover policy boundaries, evidence gaps, money reconciliation and draft status. The Bay Crest/Harbor review runs check fresh-source integration. Gate 3 will verify all six deliverables, a new-employer run and changed-source reruns before completion review.
+Source checks and the requirements map are in `docs/gate1-verification.md`; Gate 2 results are in `docs/gate2-verification.md`. Gate 3 source/run results are in `docs/gate3-source-run.md`; new-employer and changed-source CLI checks are in `docs/gate3-reuse-checks.md`. Tests cover policy boundaries, evidence gaps, money reconciliation, draft status and case-specific evidence.
+
+The six-case draft package is in `deliverables/`. After the fresh agent retrieval and normalization, its calculation command is:
+
+```bash
+python3 skills/class-code-assistant/scripts/audit.py --bundle .runs/gate3/six-cases.json --output-dir .runs/gate3/replay-six
+```
+
+That local bundle and its fresh captures are ignored run artifacts. To rerun in a new checkout, use the live Skill invocation above to retrieve and normalize sources again; do not expect `.runs/` to be checked in. See `docs/gate3-verification.md` for exact result checks and limitations.
 
 ## Interview rule and source handling
 

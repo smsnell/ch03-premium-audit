@@ -1,0 +1,1150 @@
+{
+  "slug": "severn-homebuilders",
+  "employer": "Severn Homebuilders",
+  "audit_start": "2025-07-07",
+  "audit_end": "2026-07-05",
+  "status": "draft; final sign-off not established",
+  "split_decision": "provisionally reject",
+  "reported": {
+    "H-420": "284670.30",
+    "C-110": "177209.40"
+  },
+  "totals": {
+    "C-110": "117368.70",
+    "H-420": "369204.39",
+    "R-310": "27567.39"
+  },
+  "rationale_refs": {
+    "C-110": "CG-04",
+    "R-310": "CG-11",
+    "R-320": "CG-12",
+    "L-620": "CG-13",
+    "H-420": "CG-15",
+    "E-510": "CG-21",
+    "M-830": "CG-22",
+    "T-610": "CG-31",
+    "G-950": "CG-35",
+    "F-710": "CG-41",
+    "F-720": "CG-42",
+    "N-910": "CG-51"
+  },
+  "baseline": "461879.70",
+  "net_adjustment": "52260.78",
+  "governing_before_office": {
+    "H-420": "309363.69",
+    "R-310": "27567.39"
+  },
+  "entries": [
+    {
+      "subject": "Garrett Holm",
+      "code": "H-420",
+      "amount": "66315.40",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ],
+      "reason": "Explicit evidence-backed work mapping"
+    },
+    {
+      "subject": "Victor Amadi",
+      "code": "H-420",
+      "amount": "62780.15",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ],
+      "reason": "Explicit evidence-backed work mapping"
+    },
+    {
+      "subject": "Peter Kowal",
+      "code": "H-420",
+      "amount": "58442.60",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ],
+      "reason": "Explicit evidence-backed work mapping"
+    },
+    {
+      "subject": "Andre Sutton",
+      "code": "H-420",
+      "amount": "49905.85",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ],
+      "reason": "Explicit evidence-backed work mapping"
+    },
+    {
+      "subject": "Colin Rusk",
+      "code": "H-420",
+      "amount": "47226.30",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ],
+      "reason": "Explicit evidence-backed work mapping"
+    },
+    {
+      "subject": "Kent Island Roofing invoice SV-KEN-01",
+      "code": "R-310",
+      "amount": "8580.00",
+      "evidence": [
+        "subcontractor-payments.csv",
+        "insurance-certificates.csv",
+        "guide",
+        "interview-2"
+      ],
+      "reason": "No verified matching full-period certificate: 60% per invoice, half-up cents (P3/P7)"
+    },
+    {
+      "subject": "Tidewater Drywall invoice SV-TID-01",
+      "code": "H-420",
+      "amount": "10944.33",
+      "evidence": [
+        "subcontractor-payments.csv",
+        "insurance-certificates.csv",
+        "guide",
+        "interview-2"
+      ],
+      "reason": "No verified matching full-period certificate: 60% per invoice, half-up cents (P3/P7)"
+    },
+    {
+      "subject": "Tidewater Drywall invoice SV-TID-02",
+      "code": "H-420",
+      "amount": "13749.06",
+      "evidence": [
+        "subcontractor-payments.csv",
+        "insurance-certificates.csv",
+        "guide",
+        "interview-2"
+      ],
+      "reason": "No verified matching full-period certificate: 60% per invoice, half-up cents (P3/P7)"
+    },
+    {
+      "subject": "Kent Island Roofing invoice SV-KEN-02",
+      "code": "R-310",
+      "amount": "11928.27",
+      "evidence": [
+        "subcontractor-payments.csv",
+        "insurance-certificates.csv",
+        "guide",
+        "interview-2"
+      ],
+      "reason": "No verified matching full-period certificate: 60% per invoice, half-up cents (P3/P7)"
+    },
+    {
+      "subject": "Kent Island Roofing invoice SV-KEN-03",
+      "code": "R-310",
+      "amount": "7059.12",
+      "evidence": [
+        "subcontractor-payments.csv",
+        "insurance-certificates.csv",
+        "guide",
+        "interview-2"
+      ],
+      "reason": "No verified matching full-period certificate: 60% per invoice, half-up cents (P3/P7)"
+    },
+    {
+      "subject": "Marissa Gale",
+      "code": "C-110",
+      "amount": "71250.45",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide",
+        "interview-2",
+        "site-signin-log.csv"
+      ],
+      "reason": "4 unique in-period site days"
+    },
+    {
+      "subject": "Dana Whitcomb",
+      "code": "H-420",
+      "amount": "59840.70",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide",
+        "interview-2",
+        "site-signin-log.csv"
+      ],
+      "reason": "11 unique in-period site days; entire pay to governing field code before office transfers (P2)"
+    },
+    {
+      "subject": "Helen Ostrow",
+      "code": "C-110",
+      "amount": "46118.25",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide",
+        "interview-2"
+      ],
+      "reason": "0 unique in-period site days"
+    }
+  ],
+  "adjustments": [
+    {
+      "id": "adjustment-1",
+      "subject": "Garrett Holm",
+      "before": {
+        "code not specified in application": "66315.40"
+      },
+      "after": {
+        "H-420": "66315.40"
+      },
+      "kind": "baseline_allocation",
+      "net": "0.00",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ],
+      "reason": "Explicit evidence-backed work mapping"
+    },
+    {
+      "id": "adjustment-2",
+      "subject": "Victor Amadi",
+      "before": {
+        "code not specified in application": "62780.15"
+      },
+      "after": {
+        "H-420": "62780.15"
+      },
+      "kind": "baseline_allocation",
+      "net": "0.00",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ],
+      "reason": "Explicit evidence-backed work mapping"
+    },
+    {
+      "id": "adjustment-3",
+      "subject": "Peter Kowal",
+      "before": {
+        "code not specified in application": "58442.60"
+      },
+      "after": {
+        "H-420": "58442.60"
+      },
+      "kind": "baseline_allocation",
+      "net": "0.00",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ],
+      "reason": "Explicit evidence-backed work mapping"
+    },
+    {
+      "id": "adjustment-4",
+      "subject": "Andre Sutton",
+      "before": {
+        "code not specified in application": "49905.85"
+      },
+      "after": {
+        "H-420": "49905.85"
+      },
+      "kind": "baseline_allocation",
+      "net": "0.00",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ],
+      "reason": "Explicit evidence-backed work mapping"
+    },
+    {
+      "id": "adjustment-5",
+      "subject": "Colin Rusk",
+      "before": {
+        "code not specified in application": "47226.30"
+      },
+      "after": {
+        "H-420": "47226.30"
+      },
+      "kind": "baseline_allocation",
+      "net": "0.00",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ],
+      "reason": "Explicit evidence-backed work mapping"
+    },
+    {
+      "id": "adjustment-6",
+      "subject": "Kent Island Roofing invoice SV-KEN-01",
+      "before": {},
+      "after": {
+        "R-310": "8580.00"
+      },
+      "kind": "adjustment",
+      "net": "8580.00",
+      "evidence": [
+        "subcontractor-payments.csv",
+        "insurance-certificates.csv",
+        "guide",
+        "interview-2"
+      ],
+      "reason": "No verified matching full-period certificate: 60% per invoice, half-up cents (P3/P7)"
+    },
+    {
+      "id": "adjustment-7",
+      "subject": "Tidewater Drywall invoice SV-TID-01",
+      "before": {},
+      "after": {
+        "H-420": "10944.33"
+      },
+      "kind": "adjustment",
+      "net": "10944.33",
+      "evidence": [
+        "subcontractor-payments.csv",
+        "insurance-certificates.csv",
+        "guide",
+        "interview-2"
+      ],
+      "reason": "No verified matching full-period certificate: 60% per invoice, half-up cents (P3/P7)"
+    },
+    {
+      "id": "adjustment-8",
+      "subject": "Tidewater Drywall invoice SV-TID-02",
+      "before": {},
+      "after": {
+        "H-420": "13749.06"
+      },
+      "kind": "adjustment",
+      "net": "13749.06",
+      "evidence": [
+        "subcontractor-payments.csv",
+        "insurance-certificates.csv",
+        "guide",
+        "interview-2"
+      ],
+      "reason": "No verified matching full-period certificate: 60% per invoice, half-up cents (P3/P7)"
+    },
+    {
+      "id": "adjustment-9",
+      "subject": "Kent Island Roofing invoice SV-KEN-02",
+      "before": {},
+      "after": {
+        "R-310": "11928.27"
+      },
+      "kind": "adjustment",
+      "net": "11928.27",
+      "evidence": [
+        "subcontractor-payments.csv",
+        "insurance-certificates.csv",
+        "guide",
+        "interview-2"
+      ],
+      "reason": "No verified matching full-period certificate: 60% per invoice, half-up cents (P3/P7)"
+    },
+    {
+      "id": "adjustment-10",
+      "subject": "Kent Island Roofing invoice SV-KEN-03",
+      "before": {},
+      "after": {
+        "R-310": "7059.12"
+      },
+      "kind": "adjustment",
+      "net": "7059.12",
+      "evidence": [
+        "subcontractor-payments.csv",
+        "insurance-certificates.csv",
+        "guide",
+        "interview-2"
+      ],
+      "reason": "No verified matching full-period certificate: 60% per invoice, half-up cents (P3/P7)"
+    },
+    {
+      "id": "adjustment-11",
+      "subject": "Marissa Gale",
+      "before": {
+        "code not specified in application": "71250.45"
+      },
+      "after": {
+        "C-110": "71250.45"
+      },
+      "kind": "baseline_allocation",
+      "net": "0.00",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide",
+        "interview-2",
+        "site-signin-log.csv"
+      ],
+      "reason": "4 unique in-period site days"
+    },
+    {
+      "id": "adjustment-12",
+      "subject": "Dana Whitcomb",
+      "before": {
+        "code not specified in application": "59840.70"
+      },
+      "after": {
+        "H-420": "59840.70"
+      },
+      "kind": "baseline_allocation",
+      "net": "0.00",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide",
+        "interview-2",
+        "site-signin-log.csv"
+      ],
+      "reason": "11 unique in-period site days; entire pay to governing field code before office transfers (P2)"
+    },
+    {
+      "id": "adjustment-13",
+      "subject": "Helen Ostrow",
+      "before": {
+        "code not specified in application": "46118.25"
+      },
+      "after": {
+        "C-110": "46118.25"
+      },
+      "kind": "baseline_allocation",
+      "net": "0.00",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide",
+        "interview-2"
+      ],
+      "reason": "0 unique in-period site days"
+    }
+  ],
+  "decisions": [
+    {
+      "subject": "Garrett Holm",
+      "reason": "Explicit evidence-backed work mapping",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Victor Amadi",
+      "reason": "Explicit evidence-backed work mapping",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Peter Kowal",
+      "reason": "Explicit evidence-backed work mapping",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Andre Sutton",
+      "reason": "Explicit evidence-backed work mapping",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Colin Rusk",
+      "reason": "Explicit evidence-backed work mapping",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Martin Severn",
+      "reason": "Unquantified completeness gap",
+      "evidence": [
+        "business-description.md",
+        "guide",
+        "interview-2"
+      ]
+    },
+    {
+      "subject": "Tenbury Ridge Framing Co. invoice SV-TRF-01",
+      "reason": "Verified matching full-period certificate; no addition",
+      "evidence": [
+        "subcontractor-payments.csv",
+        "insurance-certificates.csv",
+        "guide",
+        "interview-2"
+      ]
+    },
+    {
+      "subject": "Kent Island Roofing invoice SV-KEN-01",
+      "reason": "No verified matching full-period certificate: 60% per invoice, half-up cents (P3/P7)",
+      "evidence": [
+        "subcontractor-payments.csv",
+        "insurance-certificates.csv",
+        "guide",
+        "interview-2"
+      ]
+    },
+    {
+      "subject": "Tidewater Drywall invoice SV-TID-01",
+      "reason": "No verified matching full-period certificate: 60% per invoice, half-up cents (P3/P7)",
+      "evidence": [
+        "subcontractor-payments.csv",
+        "insurance-certificates.csv",
+        "guide",
+        "interview-2"
+      ]
+    },
+    {
+      "subject": "Tenbury Ridge Framing Co. invoice SV-TRF-02",
+      "reason": "Verified matching full-period certificate; no addition",
+      "evidence": [
+        "subcontractor-payments.csv",
+        "insurance-certificates.csv",
+        "guide",
+        "interview-2"
+      ]
+    },
+    {
+      "subject": "Tidewater Drywall invoice SV-TID-02",
+      "reason": "No verified matching full-period certificate: 60% per invoice, half-up cents (P3/P7)",
+      "evidence": [
+        "subcontractor-payments.csv",
+        "insurance-certificates.csv",
+        "guide",
+        "interview-2"
+      ]
+    },
+    {
+      "subject": "Kent Island Roofing invoice SV-KEN-02",
+      "reason": "No verified matching full-period certificate: 60% per invoice, half-up cents (P3/P7)",
+      "evidence": [
+        "subcontractor-payments.csv",
+        "insurance-certificates.csv",
+        "guide",
+        "interview-2"
+      ]
+    },
+    {
+      "subject": "Tenbury Ridge Framing Co. invoice SV-TRF-03",
+      "reason": "Verified matching full-period certificate; no addition",
+      "evidence": [
+        "subcontractor-payments.csv",
+        "insurance-certificates.csv",
+        "guide",
+        "interview-2"
+      ]
+    },
+    {
+      "subject": "Kent Island Roofing invoice SV-KEN-03",
+      "reason": "No verified matching full-period certificate: 60% per invoice, half-up cents (P3/P7)",
+      "evidence": [
+        "subcontractor-payments.csv",
+        "insurance-certificates.csv",
+        "guide",
+        "interview-2"
+      ]
+    },
+    {
+      "subject": "Marissa Gale",
+      "reason": "4 unique in-period site days",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide",
+        "interview-2",
+        "site-signin-log.csv"
+      ]
+    },
+    {
+      "subject": "Dana Whitcomb",
+      "reason": "11 unique in-period site days; entire pay to governing field code before office transfers (P2)",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide",
+        "interview-2",
+        "site-signin-log.csv"
+      ]
+    },
+    {
+      "subject": "Helen Ostrow",
+      "reason": "0 unique in-period site days",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide",
+        "interview-2"
+      ]
+    }
+  ],
+  "issues": [
+    {
+      "id": "P3-kent-identity",
+      "subject": "Kent Island Roofing",
+      "treatment": "No automatic alias to Kent Island Roofing & Siding LLC. Include 60% of all three payments; listed certificate would still fail full-period test even if names match. Obtain legal-identity and whole-period coverage evidence.",
+      "evidence": [
+        "insurance-certificates.csv",
+        "subcontractor-payments.csv",
+        "interview-2"
+      ],
+      "amount": "27567.39",
+      "alternative_amount": "0.00",
+      "status": "open",
+      "confirmations": []
+    },
+    {
+      "id": "P2-governing-order",
+      "subject": "Dana Whitcomb",
+      "treatment": "Compare corrected field payroll including supported trade additions before office transfers; H-420 governs, so transfer all 59840.70.",
+      "evidence": [
+        "payroll-register.csv",
+        "subcontractor-payments.csv",
+        "site-signin-log.csv",
+        "interview-2"
+      ],
+      "amount": "59840.70",
+      "alternative_amount": null,
+      "status": "open",
+      "confirmations": []
+    },
+    {
+      "id": "SH-owner-owner-election",
+      "subject": "Martin Severn",
+      "treatment": "P4: retain reported omission provisionally; obtain election, effective dates, duties and remuneration. Unknown amount is not verified zero.",
+      "evidence": [
+        "business-description.md",
+        "guide",
+        "interview-2"
+      ],
+      "amount": null,
+      "alternative_amount": null,
+      "status": "open",
+      "confirmations": []
+    },
+    {
+      "id": "SV-KEN-01-coverage",
+      "subject": "Kent Island Roofing invoice SV-KEN-01",
+      "treatment": "Confirm legal identity, trade and full-period coverage; reverse only on sufficient evidence.",
+      "evidence": [
+        "subcontractor-payments.csv",
+        "insurance-certificates.csv",
+        "guide",
+        "interview-2"
+      ],
+      "amount": "8580.00",
+      "alternative_amount": "0.00",
+      "status": "open",
+      "confirmations": []
+    },
+    {
+      "id": "SV-TID-01-coverage",
+      "subject": "Tidewater Drywall invoice SV-TID-01",
+      "treatment": "Confirm legal identity, trade and full-period coverage; reverse only on sufficient evidence.",
+      "evidence": [
+        "subcontractor-payments.csv",
+        "insurance-certificates.csv",
+        "guide",
+        "interview-2"
+      ],
+      "amount": "10944.33",
+      "alternative_amount": "0.00",
+      "status": "open",
+      "confirmations": []
+    },
+    {
+      "id": "SV-TID-02-coverage",
+      "subject": "Tidewater Drywall invoice SV-TID-02",
+      "treatment": "Confirm legal identity, trade and full-period coverage; reverse only on sufficient evidence.",
+      "evidence": [
+        "subcontractor-payments.csv",
+        "insurance-certificates.csv",
+        "guide",
+        "interview-2"
+      ],
+      "amount": "13749.06",
+      "alternative_amount": "0.00",
+      "status": "open",
+      "confirmations": []
+    },
+    {
+      "id": "SV-KEN-02-coverage",
+      "subject": "Kent Island Roofing invoice SV-KEN-02",
+      "treatment": "Confirm legal identity, trade and full-period coverage; reverse only on sufficient evidence.",
+      "evidence": [
+        "subcontractor-payments.csv",
+        "insurance-certificates.csv",
+        "guide",
+        "interview-2"
+      ],
+      "amount": "11928.27",
+      "alternative_amount": "0.00",
+      "status": "open",
+      "confirmations": []
+    },
+    {
+      "id": "SV-KEN-03-coverage",
+      "subject": "Kent Island Roofing invoice SV-KEN-03",
+      "treatment": "Confirm legal identity, trade and full-period coverage; reverse only on sufficient evidence.",
+      "evidence": [
+        "subcontractor-payments.csv",
+        "insurance-certificates.csv",
+        "guide",
+        "interview-2"
+      ],
+      "amount": "7059.12",
+      "alternative_amount": "0.00",
+      "status": "open",
+      "confirmations": []
+    }
+  ],
+  "case_notes": [
+    {
+      "subject": "Source timing and confirmation status",
+      "detail": "Audit period is July 7, 2025 through July 5, 2026. The field-note visit is after audit end and supplies duty/context evidence; it is not an additional in-period site or ride day. Application code figures are aggregate only; individual application classifications are unspecified. No employer confirmation has been received; source statements and implementation approval are not case confirmation.",
+      "question": "Confirm the application, audit dates, payroll completeness and whether the post-period field-note duties also describe this audit period; identify any omitted person, payment or record.",
+      "evidence": [
+        "business-description.md",
+        "application.md",
+        "field-notes.md",
+        "interview-2"
+      ]
+    },
+    {
+      "subject": "Garrett Holm / SH-E01",
+      "detail": "payroll-register.csv line 2: wages 66315.40; Own crew performs residential framing, drywall, finish carpentry and site labor per business description; consistent with field notes describing houses under construction and no evidence of separate employee roofing/electrical trades. CG-15 mapping remains subject to employee-duty confirmation.",
+      "question": "Confirm Garrett Holm (SH-E01) earned 66315.40 and performed the described duties in the audit period: Own crew performs residential framing, drywall, finish carpentry and site labor per business description; consistent with field notes describing houses under construction and no evidence of separate employee roofing/electrical trades. CG-15 mapping remains subject to employee-duty confirmation.",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Victor Amadi / SH-E02",
+      "detail": "payroll-register.csv line 3: wages 62780.15; Own crew performs residential framing, drywall, finish carpentry and site labor per business description; consistent with field notes describing houses under construction and no evidence of separate employee roofing/electrical trades. CG-15 mapping remains subject to employee-duty confirmation.",
+      "question": "Confirm Victor Amadi (SH-E02) earned 62780.15 and performed the described duties in the audit period: Own crew performs residential framing, drywall, finish carpentry and site labor per business description; consistent with field notes describing houses under construction and no evidence of separate employee roofing/electrical trades. CG-15 mapping remains subject to employee-duty confirmation.",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Peter Kowal / SH-E03",
+      "detail": "payroll-register.csv line 4: wages 58442.60; Own crew performs residential framing, drywall, finish carpentry and site labor per business description; consistent with field notes describing houses under construction and no evidence of separate employee roofing/electrical trades. CG-15 mapping remains subject to employee-duty confirmation.",
+      "question": "Confirm Peter Kowal (SH-E03) earned 58442.60 and performed the described duties in the audit period: Own crew performs residential framing, drywall, finish carpentry and site labor per business description; consistent with field notes describing houses under construction and no evidence of separate employee roofing/electrical trades. CG-15 mapping remains subject to employee-duty confirmation.",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Andre Sutton / SH-E04",
+      "detail": "payroll-register.csv line 5: wages 49905.85; Own crew performs residential framing, drywall, finish carpentry and site labor per business description; consistent with field notes describing houses under construction and no evidence of separate employee roofing/electrical trades. CG-15 mapping remains subject to employee-duty confirmation.",
+      "question": "Confirm Andre Sutton (SH-E04) earned 49905.85 and performed the described duties in the audit period: Own crew performs residential framing, drywall, finish carpentry and site labor per business description; consistent with field notes describing houses under construction and no evidence of separate employee roofing/electrical trades. CG-15 mapping remains subject to employee-duty confirmation.",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Colin Rusk / SH-E05",
+      "detail": "payroll-register.csv line 6: wages 47226.30; Own crew performs residential framing, drywall, finish carpentry and site labor per business description; consistent with field notes describing houses under construction and no evidence of separate employee roofing/electrical trades. CG-15 mapping remains subject to employee-duty confirmation.",
+      "question": "Confirm Colin Rusk (SH-E05) earned 47226.30 and performed the described duties in the audit period: Own crew performs residential framing, drywall, finish carpentry and site labor per business description; consistent with field notes describing houses under construction and no evidence of separate employee roofing/electrical trades. CG-15 mapping remains subject to employee-duty confirmation.",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Marissa Gale / SH-E06",
+      "detail": "payroll-register.csv line 7: wages 71250.45; Field notes identify estimator’s occasional measuring visits; four logged days permit whole-pay C-110 under contractor office rule.",
+      "question": "Confirm Marissa Gale (SH-E06) earned 71250.45 and performed the described duties in the audit period: Field notes identify estimator’s occasional measuring visits; four logged days permit whole-pay C-110 under contractor office rule.",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Dana Whitcomb / SH-E07",
+      "detail": "payroll-register.csv line 8: wages 59840.70; Field notes identify material/paperwork deliveries and inspector meetings at sites; eleven logged days move whole pay to governing H-420, despite “errands” description.",
+      "question": "Confirm Dana Whitcomb (SH-E07) earned 59840.70 and performed the described duties in the audit period: Field notes identify material/paperwork deliveries and inspector meetings at sites; eleven logged days move whole pay to governing H-420, despite “errands” description.",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Helen Ostrow / SH-E08",
+      "detail": "payroll-register.csv line 9: wages 46118.25; Field notes explicitly state bookkeeper stays in office; no employee sign-ins, so CG-04 clerical.",
+      "question": "Confirm Helen Ostrow (SH-E08) earned 46118.25 and performed the described duties in the audit period: Field notes explicitly state bookkeeper stays in office; no employee sign-ins, so CG-04 clerical.",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Nonemployee visitor",
+      "detail": "Blank employee-ID sign-in excluded from employee day counts: 2025-12-02 County inspector at Lot 7 Mill Pond Rd.",
+      "question": "Confirm 2025-12-02 County inspector at Lot 7 Mill Pond Rd is an outside inspector, not a payroll employee; confirm employee IDs and complete sign-in entries.",
+      "evidence": [
+        "site-signin-log.csv"
+      ]
+    },
+    {
+      "subject": "Marissa Gale / office day count",
+      "detail": "site-signin-log.csv employee_id=SH-E06: 4 distinct dates: 2025-07-24, 2026-01-16, 2026-03-24, 2026-04-21. Whole pay 71250.45 remains C-110.",
+      "question": "Confirm Marissa Gale's listed dates, complete sign-in record and whole-pay 71250.45 treatment, including the duties described in the field notes.",
+      "evidence": [
+        "site-signin-log.csv",
+        "payroll-register.csv",
+        "field-notes.md",
+        "interview-2"
+      ]
+    },
+    {
+      "subject": "Dana Whitcomb / office day count",
+      "detail": "site-signin-log.csv employee_id=SH-E07: 11 distinct dates: 2025-09-17, 2025-09-19, 2025-10-02, 2025-10-17, 2025-11-14, 2026-01-08, 2026-01-14, 2026-01-16, 2026-03-04, 2026-06-16, 2026-06-23. Whole pay 59840.70 moves to H-420.",
+      "question": "Confirm Dana Whitcomb's listed dates, complete sign-in record and whole-pay 59840.70 treatment, including the duties described in the field notes.",
+      "evidence": [
+        "site-signin-log.csv",
+        "payroll-register.csv",
+        "field-notes.md",
+        "interview-2"
+      ]
+    },
+    {
+      "subject": "Helen Ostrow / office day count",
+      "detail": "site-signin-log.csv employee_id=SH-E08: 0 distinct dates: none. Whole pay 46118.25 remains C-110.",
+      "question": "Confirm Helen Ostrow's listed dates, complete sign-in record and whole-pay 46118.25 treatment, including the duties described in the field notes.",
+      "evidence": [
+        "site-signin-log.csv",
+        "payroll-register.csv",
+        "field-notes.md",
+        "interview-2"
+      ]
+    },
+    {
+      "subject": "Tenbury Ridge Framing Co. / SV-TRF-01",
+      "detail": "subcontractor-payments.csv line 2: 2025-08-22, framing, payment 21480.00; Exact-name MD-WC-448201 covers 2025-06-01–2026-12-31, including the full audit period; no addition. Provisional payroll addition 0.00 to H-420; round 60% per payment half-up to cents (P7).",
+      "question": "Confirm Tenbury Ridge Framing Co. invoice SV-TRF-01, payment 21480.00 on 2025-08-22, actual framing work, entity identity and full-period insurance; confirm 0.00 H-420 treatment and supply any missing certificate/endorsement.",
+      "evidence": [
+        "subcontractor-payments.csv",
+        "insurance-certificates.csv",
+        "interview-2",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Kent Island Roofing / SV-KEN-01",
+      "detail": "subcontractor-payments.csv line 3: 2025-09-12, roofing, payment 14300.00; Payment names Kent Island Roofing, certificate names Kent Island Roofing & Siding LLC; identity is unconfirmed and certificate MD-WC-517736 ends 2026-01-31, short of audit end even if identity were proved. Full-period coverage rule applies even to September payment. Provisional payroll addition 8580.00 to R-310; round 60% per payment half-up to cents (P7).",
+      "question": "Confirm Kent Island Roofing invoice SV-KEN-01, payment 14300.00 on 2025-09-12, actual roofing work, entity identity and full-period insurance; confirm 8580.00 R-310 treatment and supply any missing certificate/endorsement.",
+      "evidence": [
+        "subcontractor-payments.csv",
+        "insurance-certificates.csv",
+        "interview-2",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Tidewater Drywall / SV-TID-01",
+      "detail": "subcontractor-payments.csv line 4: 2025-10-03, drywall, payment 18240.55; No Tidewater certificate appears in the complete insurance-certificates.csv. Provisional payroll addition 10944.33 to H-420; round 60% per payment half-up to cents (P7).",
+      "question": "Confirm Tidewater Drywall invoice SV-TID-01, payment 18240.55 on 2025-10-03, actual drywall work, entity identity and full-period insurance; confirm 10944.33 H-420 treatment and supply any missing certificate/endorsement.",
+      "evidence": [
+        "subcontractor-payments.csv",
+        "insurance-certificates.csv",
+        "interview-2",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Tenbury Ridge Framing Co. / SV-TRF-02",
+      "detail": "subcontractor-payments.csv line 5: 2025-11-14, framing, payment 18925.50; Exact-name MD-WC-448201 covers 2025-06-01–2026-12-31, including the full audit period; no addition. Provisional payroll addition 0.00 to H-420; round 60% per payment half-up to cents (P7).",
+      "question": "Confirm Tenbury Ridge Framing Co. invoice SV-TRF-02, payment 18925.50 on 2025-11-14, actual framing work, entity identity and full-period insurance; confirm 0.00 H-420 treatment and supply any missing certificate/endorsement.",
+      "evidence": [
+        "subcontractor-payments.csv",
+        "insurance-certificates.csv",
+        "interview-2",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Tidewater Drywall / SV-TID-02",
+      "detail": "subcontractor-payments.csv line 6: 2026-02-27, drywall, payment 22915.10; No Tidewater certificate appears in the complete insurance-certificates.csv. Provisional payroll addition 13749.06 to H-420; round 60% per payment half-up to cents (P7).",
+      "question": "Confirm Tidewater Drywall invoice SV-TID-02, payment 22915.10 on 2026-02-27, actual drywall work, entity identity and full-period insurance; confirm 13749.06 H-420 treatment and supply any missing certificate/endorsement.",
+      "evidence": [
+        "subcontractor-payments.csv",
+        "insurance-certificates.csv",
+        "interview-2",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Kent Island Roofing / SV-KEN-02",
+      "detail": "subcontractor-payments.csv line 7: 2026-03-20, roofing, payment 19880.45; Payment names Kent Island Roofing, certificate names Kent Island Roofing & Siding LLC; identity is unconfirmed and certificate MD-WC-517736 ends 2026-01-31, short of audit end even if identity were proved. Full-period coverage rule applies even to September payment. Provisional payroll addition 11928.27 to R-310; round 60% per payment half-up to cents (P7).",
+      "question": "Confirm Kent Island Roofing invoice SV-KEN-02, payment 19880.45 on 2026-03-20, actual roofing work, entity identity and full-period insurance; confirm 11928.27 R-310 treatment and supply any missing certificate/endorsement.",
+      "evidence": [
+        "subcontractor-payments.csv",
+        "insurance-certificates.csv",
+        "interview-2",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Tenbury Ridge Framing Co. / SV-TRF-03",
+      "detail": "subcontractor-payments.csv line 8: 2026-04-03, framing, payment 24610.25; Exact-name MD-WC-448201 covers 2025-06-01–2026-12-31, including the full audit period; no addition. Provisional payroll addition 0.00 to H-420; round 60% per payment half-up to cents (P7).",
+      "question": "Confirm Tenbury Ridge Framing Co. invoice SV-TRF-03, payment 24610.25 on 2026-04-03, actual framing work, entity identity and full-period insurance; confirm 0.00 H-420 treatment and supply any missing certificate/endorsement.",
+      "evidence": [
+        "subcontractor-payments.csv",
+        "insurance-certificates.csv",
+        "interview-2",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Kent Island Roofing / SV-KEN-03",
+      "detail": "subcontractor-payments.csv line 9: 2026-05-08, roofing, payment 11765.20; Payment names Kent Island Roofing, certificate names Kent Island Roofing & Siding LLC; identity is unconfirmed and certificate MD-WC-517736 ends 2026-01-31, short of audit end even if identity were proved. Full-period coverage rule applies even to September payment. Provisional payroll addition 7059.12 to R-310; round 60% per payment half-up to cents (P7).",
+      "question": "Confirm Kent Island Roofing invoice SV-KEN-03, payment 11765.20 on 2026-05-08, actual roofing work, entity identity and full-period insurance; confirm 7059.12 R-310 treatment and supply any missing certificate/endorsement.",
+      "evidence": [
+        "subcontractor-payments.csv",
+        "insurance-certificates.csv",
+        "interview-2",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Application decision and call priority",
+      "detail": "Reject APP-SH-0417: Dana’s 59840.70 moves from the aggregate office basis to H-420; Marissa’s four days retain 71250.45 C-110 and Helen retains 46118.25 C-110. Tidewater additions total 24693.39 H-420; Kent additions total 27567.39 R-310. Recommend first employer call: insurance documentation can change 52260.78 of known added payroll; also resolve entity mismatch, office duties and missing owner election. No rates/premium comparison was made.",
+      "question": "Confirm Dana’s transfer, Marissa/Helen retention, each payment and certificate, and proposed call priority; provide missing full-period subcontractor coverage and Martin Severn’s election.",
+      "evidence": [
+        "application.md",
+        "site-signin-log.csv",
+        "payroll-register.csv",
+        "subcontractor-payments.csv",
+        "insurance-certificates.csv",
+        "interview-2"
+      ]
+    },
+    {
+      "subject": "Martin Severn / reported owner exclusion",
+      "detail": "business-description.md reports an election and omission from the register, but no election form/effective dates are among the freshly listed files. Retain the reported omission only as P4 provisional completeness gap. Pay, duties, field-work status and any additional exposure remain unknown, not zero; 63700.00 is not automatically assigned to an owner of unknown duties. CG-05-first precedence against the working-owner rule is proposed, not confirmed.",
+      "question": "Provide Martin Severn's election and dates covering the entire audit period, confirm duties/remuneration if exclusion fails, and confirm the proposed election-first precedence; final sign-off remains blocked.",
+      "evidence": [
+        "business-description.md",
+        "guide",
+        "interview-2"
+      ]
+    }
+  ],
+  "rule_refs": {
+    "owner": {
+      "sources": [
+        "guide",
+        "interview-2"
+      ],
+      "citation": "Guide CG-05 and interview 2 11:28 PM, 12:32 AM. Included field owner fixed basis 63700.00; election precedence and missing elections unresolved P4."
+    },
+    "office": {
+      "sources": [
+        "guide",
+        "interview-2"
+      ],
+      "citation": "Interview 2 11:19–11:20 PM and 12:26–12:28 AM: contractor office rule, 4/5 day boundary; whole pay. CG-04 code wording."
+    },
+    "governing": {
+      "sources": [
+        "guide",
+        "interview-2"
+      ],
+      "citation": "Interview 2 12:27–12:28 AM: largest field payroll. P2: corrected field/addition totals before office transfer, unique positive-time dates; ordering remains open."
+    },
+    "subcontractors": {
+      "sources": [
+        "guide",
+        "interview-2"
+      ],
+      "citation": "Guide CG-06; interview 2 12:28–12:29 AM: 60% unless whole audit-period coverage. No entity-alias practice. P3/P7: preserve names, half-up cents per invoice."
+    }
+  },
+  "sources": [
+    {
+      "id": "subcontractor-payments.csv",
+      "drive_id": "1aGYgGe_OuDtWqNxLrkwuPSFCnsiVN3zw",
+      "url": "https://drive.google.com/file/d/1aGYgGe_OuDtWqNxLrkwuPSFCnsiVN3zw/view?usp=drivesdk",
+      "path": "/home/mike/ch03-premium-audit/.runs/gate3/sources/severn-homebuilders/subcontractor-payments.csv",
+      "retrieved_at": "2026-11-03T06:24:16.140Z",
+      "modified_at": "2026-10-22T14:25:02.936Z",
+      "byte_count": 522,
+      "sha256": "114f76a91a9a66ea0c1fee4f8c19e268ada6119f18d4ec561d6a168833d4c516",
+      "mime_type": "text/csv",
+      "data_rows": 8,
+      "columns": [
+        "date",
+        "subcontractor",
+        "work",
+        "invoice",
+        "amount_paid"
+      ]
+    },
+    {
+      "id": "site-signin-log.csv",
+      "drive_id": "1kKrXNEVrrbAhcXcZltxfiagYqN-5g8WE",
+      "url": "https://drive.google.com/file/d/1kKrXNEVrrbAhcXcZltxfiagYqN-5g8WE/view?usp=drivesdk",
+      "path": "/home/mike/ch03-premium-audit/.runs/gate3/sources/severn-homebuilders/site-signin-log.csv",
+      "retrieved_at": "2026-11-03T06:24:16.140Z",
+      "modified_at": "2026-10-22T14:24:59.682Z",
+      "byte_count": 931,
+      "sha256": "9ae36a9e35bb64f9ccbecb9321c0fddf9f721ff1cfce7633bc5f45f00e9937f7",
+      "mime_type": "text/csv",
+      "data_rows": 16,
+      "columns": [
+        "date",
+        "employee_id",
+        "name",
+        "site",
+        "signed_in_at"
+      ]
+    },
+    {
+      "id": "payroll-register.csv",
+      "drive_id": "1aSBzZCWLFZJUTvLkz0hDPqk-flSWwOpU",
+      "url": "https://drive.google.com/file/d/1aSBzZCWLFZJUTvLkz0hDPqk-flSWwOpU/view?usp=drivesdk",
+      "path": "/home/mike/ch03-premium-audit/.runs/gate3/sources/severn-homebuilders/payroll-register.csv",
+      "retrieved_at": "2026-11-03T06:24:16.140Z",
+      "modified_at": "2026-10-22T14:24:55.101Z",
+      "byte_count": 354,
+      "sha256": "4536004d11a63f4e733a37905ab9201f021ee34a05982405dd7f8f48a81bd075",
+      "mime_type": "text/csv",
+      "data_rows": 8,
+      "columns": [
+        "employee_id",
+        "name",
+        "position",
+        "wages_paid"
+      ]
+    },
+    {
+      "id": "insurance-certificates.csv",
+      "drive_id": "1_oolMVpZAkbDIGqkMDxreysfcQR-nlJN",
+      "url": "https://drive.google.com/file/d/1_oolMVpZAkbDIGqkMDxreysfcQR-nlJN/view?usp=drivesdk",
+      "path": "/home/mike/ch03-premium-audit/.runs/gate3/sources/severn-homebuilders/insurance-certificates.csv",
+      "retrieved_at": "2026-11-03T06:24:16.140Z",
+      "modified_at": "2026-10-22T14:24:52.323Z",
+      "byte_count": 184,
+      "sha256": "77ff18a72e35e9326e752e14d09aa5a8db63fd923d13afb107c06970ee489909",
+      "mime_type": "text/csv",
+      "data_rows": 2,
+      "columns": [
+        "subcontractor",
+        "certificate_no",
+        "coverage_from",
+        "coverage_to"
+      ]
+    },
+    {
+      "id": "field-notes.md",
+      "drive_id": "1t04ez9kiXyK7cCaGIBAMi-DVUvML8OID",
+      "url": "https://drive.google.com/file/d/1t04ez9kiXyK7cCaGIBAMi-DVUvML8OID/view?usp=drivesdk",
+      "path": "/home/mike/ch03-premium-audit/.runs/gate3/sources/severn-homebuilders/field-notes.md",
+      "retrieved_at": "2026-11-03T06:24:16.140Z",
+      "modified_at": "2026-10-22T14:24:50.172Z",
+      "byte_count": 546,
+      "sha256": "1460d5cc05dc487d80bb2c382152dad609baf45cc24bec77035cf00359e5be6d",
+      "mime_type": "text/markdown"
+    },
+    {
+      "id": "business-description.md",
+      "drive_id": "1roIR4kXhtGFaas5i2dmIdLY62LxF0tVy",
+      "url": "https://drive.google.com/file/d/1roIR4kXhtGFaas5i2dmIdLY62LxF0tVy/view?usp=drivesdk",
+      "path": "/home/mike/ch03-premium-audit/.runs/gate3/sources/severn-homebuilders/business-description.md",
+      "retrieved_at": "2026-11-03T06:24:16.140Z",
+      "modified_at": "2026-10-22T14:24:47.760Z",
+      "byte_count": 405,
+      "sha256": "7404b81d9cb83a1256a2e25299a5f9197a41f0f170236ac7633dc5f98692e9f5",
+      "mime_type": "text/markdown"
+    },
+    {
+      "id": "application.md",
+      "drive_id": "1xgtCvPL9ke2MMfS3Q3_WnKQCi50Q0PJD",
+      "url": "https://drive.google.com/file/d/1xgtCvPL9ke2MMfS3Q3_WnKQCi50Q0PJD/view?usp=drivesdk",
+      "path": "/home/mike/ch03-premium-audit/.runs/gate3/sources/severn-homebuilders/application.md",
+      "retrieved_at": "2026-11-03T06:24:16.140Z",
+      "modified_at": "2026-10-22T14:24:45.723Z",
+      "byte_count": 333,
+      "sha256": "ee9aa45fe1247743dd9da4c6e7693dd8151630e98653fd944acdb817ff4b25ed",
+      "mime_type": "text/markdown"
+    },
+    {
+      "id": "guide",
+      "drive_id": "1L5MxLny7erhjSwCvl43DTSmAt3wgv22j",
+      "url": "https://drive.google.com/file/d/1L5MxLny7erhjSwCvl43DTSmAt3wgv22j/view?usp=drivesdk",
+      "path": "/home/mike/ch03-premium-audit/.runs/gate3/sources/guide.md",
+      "retrieved_at": "2026-11-03T06:24:18.728Z",
+      "modified_at": "2026-10-22T14:23:33.232Z",
+      "byte_count": 3555,
+      "sha256": "89480f691737a0e8a762a836b8412476e0ed9d0b37639eb898e2826771c1dba8",
+      "mime_type": "text/markdown"
+    },
+    {
+      "id": "interview-2",
+      "path": "/home/mike/ch03-premium-audit/interviews/interview-2.md",
+      "url": "local:interviews/interview-2.md",
+      "retrieved_at": "2026-11-03T06:28:07.754231+00:00",
+      "sha256": "69963d4e448a0a4f9fa2e327fd35bc184518c52b0c5c6986635614c5a59229b7"
+    }
+  ]
+}

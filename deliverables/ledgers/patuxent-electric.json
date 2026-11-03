@@ -1,0 +1,809 @@
+{
+  "slug": "patuxent-electric",
+  "employer": "Patuxent Electric",
+  "audit_start": "2025-07-07",
+  "audit_end": "2026-07-05",
+  "status": "draft; final sign-off not established",
+  "split_decision": "provisionally reject",
+  "reported": {
+    "E-510": "306024.85",
+    "C-110": "161905.60"
+  },
+  "totals": {
+    "C-110": "43905.60",
+    "E-510": "372274.85"
+  },
+  "rationale_refs": {
+    "C-110": "CG-04",
+    "R-310": "CG-11",
+    "R-320": "CG-12",
+    "L-620": "CG-13",
+    "H-420": "CG-15",
+    "E-510": "CG-21",
+    "M-830": "CG-22",
+    "T-610": "CG-31",
+    "G-950": "CG-35",
+    "F-710": "CG-41",
+    "F-720": "CG-42",
+    "N-910": "CG-51"
+  },
+  "baseline": "467930.45",
+  "net_adjustment": "-51750.00",
+  "governing_before_office": {
+    "E-510": "372274.85"
+  },
+  "entries": [
+    {
+      "subject": "Raymond Dunmore",
+      "code": "E-510",
+      "amount": "63700.00",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide",
+        "site-signin-log.csv",
+        "interview-2"
+      ],
+      "reason": "Included working owner with field duties: fixed period basis"
+    },
+    {
+      "subject": "Curtis Bell",
+      "code": "E-510",
+      "amount": "72410.35",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ],
+      "reason": "Explicit evidence-backed work mapping"
+    },
+    {
+      "subject": "Hector Ruiz",
+      "code": "E-510",
+      "amount": "69855.90",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ],
+      "reason": "Explicit evidence-backed work mapping"
+    },
+    {
+      "subject": "Aaron Weiss",
+      "code": "E-510",
+      "amount": "64120.65",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ],
+      "reason": "Explicit evidence-backed work mapping"
+    },
+    {
+      "subject": "Tyrone Banks",
+      "code": "E-510",
+      "amount": "58377.20",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ],
+      "reason": "Explicit evidence-backed work mapping"
+    },
+    {
+      "subject": "Kyle Brandt",
+      "code": "E-510",
+      "amount": "41260.75",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ],
+      "reason": "Explicit evidence-backed work mapping"
+    },
+    {
+      "subject": "Linda Marsh",
+      "code": "C-110",
+      "amount": "43905.60",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ],
+      "reason": "Explicit evidence-backed work mapping"
+    },
+    {
+      "subject": "Curtis Bell payment PE-E02-travel",
+      "code": "E-510",
+      "amount": "720.00",
+      "evidence": [
+        "payroll-register.csv",
+        "field-notes.md",
+        "business-description.md",
+        "guide",
+        "interview-2"
+      ],
+      "reason": "$47 per recorded out-of-town day; only excess included"
+    },
+    {
+      "subject": "Hector Ruiz payment PE-E03-travel",
+      "code": "E-510",
+      "amount": "720.00",
+      "evidence": [
+        "payroll-register.csv",
+        "field-notes.md",
+        "business-description.md",
+        "guide",
+        "interview-2"
+      ],
+      "reason": "$47 per recorded out-of-town day; only excess included"
+    },
+    {
+      "subject": "Aaron Weiss payment PE-E04-travel",
+      "code": "E-510",
+      "amount": "720.00",
+      "evidence": [
+        "payroll-register.csv",
+        "field-notes.md",
+        "business-description.md",
+        "guide",
+        "interview-2"
+      ],
+      "reason": "$47 per recorded out-of-town day; only excess included"
+    },
+    {
+      "subject": "Kyle Brandt payment PE-E06-travel",
+      "code": "E-510",
+      "amount": "390.00",
+      "evidence": [
+        "payroll-register.csv",
+        "field-notes.md",
+        "business-description.md",
+        "guide",
+        "interview-2"
+      ],
+      "reason": "P5: zero-day payment provisionally included absent documented expense basis"
+    }
+  ],
+  "adjustments": [
+    {
+      "id": "adjustment-1",
+      "subject": "Raymond Dunmore",
+      "before": {
+        "code not specified in application": "118000.00"
+      },
+      "after": {
+        "E-510": "63700.00"
+      },
+      "kind": "baseline_allocation",
+      "net": "-54300.00",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide",
+        "site-signin-log.csv",
+        "interview-2"
+      ],
+      "reason": "Included working owner with field duties: fixed period basis"
+    },
+    {
+      "id": "adjustment-2",
+      "subject": "Curtis Bell",
+      "before": {
+        "code not specified in application": "72410.35"
+      },
+      "after": {
+        "E-510": "72410.35"
+      },
+      "kind": "baseline_allocation",
+      "net": "0.00",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ],
+      "reason": "Explicit evidence-backed work mapping"
+    },
+    {
+      "id": "adjustment-3",
+      "subject": "Hector Ruiz",
+      "before": {
+        "code not specified in application": "69855.90"
+      },
+      "after": {
+        "E-510": "69855.90"
+      },
+      "kind": "baseline_allocation",
+      "net": "0.00",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ],
+      "reason": "Explicit evidence-backed work mapping"
+    },
+    {
+      "id": "adjustment-4",
+      "subject": "Aaron Weiss",
+      "before": {
+        "code not specified in application": "64120.65"
+      },
+      "after": {
+        "E-510": "64120.65"
+      },
+      "kind": "baseline_allocation",
+      "net": "0.00",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ],
+      "reason": "Explicit evidence-backed work mapping"
+    },
+    {
+      "id": "adjustment-5",
+      "subject": "Tyrone Banks",
+      "before": {
+        "code not specified in application": "58377.20"
+      },
+      "after": {
+        "E-510": "58377.20"
+      },
+      "kind": "baseline_allocation",
+      "net": "0.00",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ],
+      "reason": "Explicit evidence-backed work mapping"
+    },
+    {
+      "id": "adjustment-6",
+      "subject": "Kyle Brandt",
+      "before": {
+        "code not specified in application": "41260.75"
+      },
+      "after": {
+        "E-510": "41260.75"
+      },
+      "kind": "baseline_allocation",
+      "net": "0.00",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ],
+      "reason": "Explicit evidence-backed work mapping"
+    },
+    {
+      "id": "adjustment-7",
+      "subject": "Linda Marsh",
+      "before": {
+        "code not specified in application": "43905.60"
+      },
+      "after": {
+        "C-110": "43905.60"
+      },
+      "kind": "baseline_allocation",
+      "net": "0.00",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ],
+      "reason": "Explicit evidence-backed work mapping"
+    },
+    {
+      "id": "adjustment-8",
+      "subject": "Curtis Bell payment PE-E02-travel",
+      "before": {},
+      "after": {
+        "E-510": "720.00"
+      },
+      "kind": "adjustment",
+      "net": "720.00",
+      "evidence": [
+        "payroll-register.csv",
+        "field-notes.md",
+        "business-description.md",
+        "guide",
+        "interview-2"
+      ],
+      "reason": "$47 per recorded out-of-town day; only excess included"
+    },
+    {
+      "id": "adjustment-9",
+      "subject": "Hector Ruiz payment PE-E03-travel",
+      "before": {},
+      "after": {
+        "E-510": "720.00"
+      },
+      "kind": "adjustment",
+      "net": "720.00",
+      "evidence": [
+        "payroll-register.csv",
+        "field-notes.md",
+        "business-description.md",
+        "guide",
+        "interview-2"
+      ],
+      "reason": "$47 per recorded out-of-town day; only excess included"
+    },
+    {
+      "id": "adjustment-10",
+      "subject": "Aaron Weiss payment PE-E04-travel",
+      "before": {},
+      "after": {
+        "E-510": "720.00"
+      },
+      "kind": "adjustment",
+      "net": "720.00",
+      "evidence": [
+        "payroll-register.csv",
+        "field-notes.md",
+        "business-description.md",
+        "guide",
+        "interview-2"
+      ],
+      "reason": "$47 per recorded out-of-town day; only excess included"
+    },
+    {
+      "id": "adjustment-11",
+      "subject": "Kyle Brandt payment PE-E06-travel",
+      "before": {},
+      "after": {
+        "E-510": "390.00"
+      },
+      "kind": "adjustment",
+      "net": "390.00",
+      "evidence": [
+        "payroll-register.csv",
+        "field-notes.md",
+        "business-description.md",
+        "guide",
+        "interview-2"
+      ],
+      "reason": "P5: zero-day payment provisionally included absent documented expense basis"
+    }
+  ],
+  "decisions": [
+    {
+      "subject": "Raymond Dunmore",
+      "reason": "Included working owner with field duties: fixed period basis",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide",
+        "site-signin-log.csv",
+        "interview-2"
+      ]
+    },
+    {
+      "subject": "Curtis Bell",
+      "reason": "Explicit evidence-backed work mapping",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Hector Ruiz",
+      "reason": "Explicit evidence-backed work mapping",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Aaron Weiss",
+      "reason": "Explicit evidence-backed work mapping",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Tyrone Banks",
+      "reason": "Explicit evidence-backed work mapping",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Kyle Brandt",
+      "reason": "Explicit evidence-backed work mapping",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Linda Marsh",
+      "reason": "Explicit evidence-backed work mapping",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Curtis Bell payment PE-E02-travel",
+      "reason": "$47 per recorded out-of-town day; only excess included",
+      "evidence": [
+        "payroll-register.csv",
+        "field-notes.md",
+        "business-description.md",
+        "guide",
+        "interview-2"
+      ]
+    },
+    {
+      "subject": "Hector Ruiz payment PE-E03-travel",
+      "reason": "$47 per recorded out-of-town day; only excess included",
+      "evidence": [
+        "payroll-register.csv",
+        "field-notes.md",
+        "business-description.md",
+        "guide",
+        "interview-2"
+      ]
+    },
+    {
+      "subject": "Aaron Weiss payment PE-E04-travel",
+      "reason": "$47 per recorded out-of-town day; only excess included",
+      "evidence": [
+        "payroll-register.csv",
+        "field-notes.md",
+        "business-description.md",
+        "guide",
+        "interview-2"
+      ]
+    },
+    {
+      "subject": "Tyrone Banks payment PE-E05-travel",
+      "reason": "$47 per recorded out-of-town day; only excess included",
+      "evidence": [
+        "payroll-register.csv",
+        "field-notes.md",
+        "business-description.md",
+        "guide",
+        "interview-2"
+      ]
+    },
+    {
+      "subject": "Kyle Brandt payment PE-E06-travel",
+      "reason": "P5: zero-day payment provisionally included absent documented expense basis",
+      "evidence": [
+        "payroll-register.csv",
+        "field-notes.md",
+        "business-description.md",
+        "guide",
+        "interview-2"
+      ]
+    }
+  ],
+  "issues": [
+    {
+      "id": "PE-E06-travel-zero-days",
+      "subject": "Kyle Brandt payment PE-E06-travel",
+      "treatment": "Obtain purpose, expense log and corrected travel days; zero-day treatment is proposed.",
+      "evidence": [
+        "payroll-register.csv",
+        "field-notes.md",
+        "business-description.md",
+        "guide",
+        "interview-2"
+      ],
+      "amount": "390.00",
+      "alternative_amount": "0.00",
+      "status": "open",
+      "confirmations": []
+    }
+  ],
+  "case_notes": [
+    {
+      "subject": "Source timing and confirmation status",
+      "detail": "Audit period is July 7, 2025 through July 5, 2026. The field-note visit is after audit end and supplies duty/context evidence; it is not an additional in-period site or ride day. Application code figures are aggregate only; individual application classifications are unspecified. No employer confirmation has been received; source statements and implementation approval are not case confirmation.",
+      "question": "Confirm the application, audit dates, payroll completeness and whether the post-period field-note duties also describe this audit period; identify any omitted person, payment or record.",
+      "evidence": [
+        "business-description.md",
+        "application.md",
+        "field-notes.md",
+        "interview-2"
+      ]
+    },
+    {
+      "subject": "Raymond Dunmore / PE-E01",
+      "detail": "payroll-register.csv line 2: wages 118000.00; Business description says included owner with no election; field notes establish leading crews and personally pulling wire. In-period sign-ins corroborate field presence; replace actual 118000.00 with fixed 63700.00 E-510 under Nadia’s 11:28 PM rule.",
+      "question": "Confirm Raymond Dunmore (PE-E01) earned 118000.00 and performed the described duties in the audit period: Business description says included owner with no election; field notes establish leading crews and personally pulling wire. In-period sign-ins corroborate field presence; replace actual 118000.00 with fixed 63700.00 E-510 under Nadia’s 11:28 PM rule.",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Curtis Bell / PE-E02",
+      "detail": "payroll-register.csv line 3: wages 72410.35; Business description establishes residential/light-commercial wiring; field notes describe electricians on wiring crews and out-of-town electrical jobs. CG-21 actual-trade mapping, subject to confirming individual work and period.",
+      "question": "Confirm Curtis Bell (PE-E02) earned 72410.35 and performed the described duties in the audit period: Business description establishes residential/light-commercial wiring; field notes describe electricians on wiring crews and out-of-town electrical jobs. CG-21 actual-trade mapping, subject to confirming individual work and period.",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Hector Ruiz / PE-E03",
+      "detail": "payroll-register.csv line 4: wages 69855.90; Business description establishes residential/light-commercial wiring; field notes describe electricians on wiring crews and out-of-town electrical jobs. CG-21 actual-trade mapping, subject to confirming individual work and period.",
+      "question": "Confirm Hector Ruiz (PE-E03) earned 69855.90 and performed the described duties in the audit period: Business description establishes residential/light-commercial wiring; field notes describe electricians on wiring crews and out-of-town electrical jobs. CG-21 actual-trade mapping, subject to confirming individual work and period.",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Aaron Weiss / PE-E04",
+      "detail": "payroll-register.csv line 5: wages 64120.65; Business description establishes residential/light-commercial wiring; field notes describe electricians on wiring crews and out-of-town electrical jobs. CG-21 actual-trade mapping, subject to confirming individual work and period.",
+      "question": "Confirm Aaron Weiss (PE-E04) earned 64120.65 and performed the described duties in the audit period: Business description establishes residential/light-commercial wiring; field notes describe electricians on wiring crews and out-of-town electrical jobs. CG-21 actual-trade mapping, subject to confirming individual work and period.",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Tyrone Banks / PE-E05",
+      "detail": "payroll-register.csv line 6: wages 58377.20; Business description establishes residential/light-commercial wiring; field notes describe electricians on wiring crews and out-of-town electrical jobs. CG-21 actual-trade mapping, subject to confirming individual work and period.",
+      "question": "Confirm Tyrone Banks (PE-E05) earned 58377.20 and performed the described duties in the audit period: Business description establishes residential/light-commercial wiring; field notes describe electricians on wiring crews and out-of-town electrical jobs. CG-21 actual-trade mapping, subject to confirming individual work and period.",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Kyle Brandt / PE-E06",
+      "detail": "payroll-register.csv line 7: wages 41260.75; Business description establishes residential/light-commercial wiring; field notes describe electricians on wiring crews and out-of-town electrical jobs. CG-21 actual-trade mapping, subject to confirming individual work and period.",
+      "question": "Confirm Kyle Brandt (PE-E06) earned 41260.75 and performed the described duties in the audit period: Business description establishes residential/light-commercial wiring; field notes describe electricians on wiring crews and out-of-town electrical jobs. CG-21 actual-trade mapping, subject to confirming individual work and period.",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Linda Marsh / PE-E07",
+      "detail": "payroll-register.csv line 8: wages 43905.60; Field notes explicitly state Linda runs the office and never goes to jobs; C-110 under CG-04.",
+      "question": "Confirm Linda Marsh (PE-E07) earned 43905.60 and performed the described duties in the audit period: Field notes explicitly state Linda runs the office and never goes to jobs; C-110 under CG-04.",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Raymond Dunmore / owner basis",
+      "detail": "payroll-register.csv line 2 pays 118000.00; business-description.md says no election; field-notes.md says he personally pulls wire. site-signin-log.csv lines 2–215 contain 214 distinct PE-E01 dates, 2025-07-07 through 2026-07-03. Fixed working-owner basis replaces his wages with 63700.00 E-510, reducing known payroll 54300.00. No election precedence exception is needed on these facts; source duty continuity and no-election statement need confirmation.",
+      "question": "Confirm Raymond’s no-election status, in-period personal electrical field work and 214 dates, actual draw 118000.00, and fixed 63700.00 E-510 substitution with 54300.00 reduction.",
+      "evidence": [
+        "payroll-register.csv",
+        "business-description.md",
+        "field-notes.md",
+        "site-signin-log.csv",
+        "interview-2",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Curtis Bell / allowance PE-E02-travel",
+      "detail": "payroll-register.csv line 3: allowance 2600.00, recorded out-of-town days 40; 47.00 × 40 = 1880.00 cap, included excess 720.00 E-510. No separate expense log/documented reimbursement is in the complete employer folder. Flat allowance above the day cap is remuneration under the house practice.",
+      "question": "Confirm Curtis Bell's 2600.00 payment, 40 travel days and 720.00 E-510 excess; provide expense documentation and corrected travel dates, particularly any basis to exclude the payment.",
+      "evidence": [
+        "payroll-register.csv",
+        "field-notes.md",
+        "interview-2",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Hector Ruiz / allowance PE-E03-travel",
+      "detail": "payroll-register.csv line 4: allowance 2600.00, recorded out-of-town days 40; 47.00 × 40 = 1880.00 cap, included excess 720.00 E-510. No separate expense log/documented reimbursement is in the complete employer folder. Flat allowance above the day cap is remuneration under the house practice.",
+      "question": "Confirm Hector Ruiz's 2600.00 payment, 40 travel days and 720.00 E-510 excess; provide expense documentation and corrected travel dates, particularly any basis to exclude the payment.",
+      "evidence": [
+        "payroll-register.csv",
+        "field-notes.md",
+        "interview-2",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Aaron Weiss / allowance PE-E04-travel",
+      "detail": "payroll-register.csv line 5: allowance 2600.00, recorded out-of-town days 40; 47.00 × 40 = 1880.00 cap, included excess 720.00 E-510. No separate expense log/documented reimbursement is in the complete employer folder. Flat allowance above the day cap is remuneration under the house practice.",
+      "question": "Confirm Aaron Weiss's 2600.00 payment, 40 travel days and 720.00 E-510 excess; provide expense documentation and corrected travel dates, particularly any basis to exclude the payment.",
+      "evidence": [
+        "payroll-register.csv",
+        "field-notes.md",
+        "interview-2",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Tyrone Banks / allowance PE-E05-travel",
+      "detail": "payroll-register.csv line 6: allowance 1034.00, recorded out-of-town days 22; 47.00 × 22 = 1034.00 cap, included excess 0.00 E-510. At the cap, so all 1034.00 is excluded.",
+      "question": "Confirm Tyrone Banks's 1034.00 payment, 22 travel days and 0.00 E-510 excess; provide expense documentation and corrected travel dates, particularly any basis to exclude the payment.",
+      "evidence": [
+        "payroll-register.csv",
+        "field-notes.md",
+        "interview-2",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Kyle Brandt / allowance PE-E06-travel",
+      "detail": "payroll-register.csv line 7: allowance 390.00, recorded out-of-town days 0; 47.00 × 0 = 0.00 cap, included excess 390.00 E-510. No separate expense log/documented reimbursement is in the complete employer folder. Zero days do not support an allowance exclusion; P5 provisionally includes 390.00 under CG-03 and awaits purpose/expense/corrected travel evidence.",
+      "question": "Confirm Kyle Brandt's 390.00 payment, 0 travel days and 390.00 E-510 excess; provide expense documentation and corrected travel dates, particularly any basis to exclude the payment.",
+      "evidence": [
+        "payroll-register.csv",
+        "field-notes.md",
+        "interview-2",
+        "guide"
+      ]
+    },
+    {
+      "subject": "Application decision",
+      "detail": "Reject APP-PE-0388. The application’s management salary treatment conflicts with Raymond’s actual electrical field duties, and blanket travel exclusion conflicts with three 720.00 excesses and proposed Kyle 390.00 inclusion. Net known-payroll change is -51750.00: -54300.00 owner basis +2160.00 ordinary allowance excess +390.00 proposed zero-day inclusion. Known allocation is 416180.45; Kyle remains open, with 415790.45 alternative if documented exclusion is established.",
+      "question": "Confirm the owner basis change, Curtis/Hector/Aaron 720.00 excesses each, Tyrone’s at-cap exclusion and Kyle’s proposed 390.00 treatment; provide any evidence changing the records.",
+      "evidence": [
+        "application.md",
+        "payroll-register.csv",
+        "site-signin-log.csv",
+        "field-notes.md",
+        "interview-2"
+      ]
+    }
+  ],
+  "rule_refs": {
+    "owner": {
+      "sources": [
+        "guide",
+        "interview-2"
+      ],
+      "citation": "Guide CG-05 and interview 2 11:28 PM, 12:32 AM. Included field owner fixed basis 63700.00; election precedence and missing elections unresolved P4."
+    },
+    "allowance": {
+      "sources": [
+        "guide",
+        "interview-2"
+      ],
+      "citation": "Guide CG-03 and interview 2 11:29 PM, 12:30–12:31 AM. 47.00 per out-of-town day; no established zero-day practice, P5 proposed."
+    }
+  },
+  "sources": [
+    {
+      "id": "site-signin-log.csv",
+      "drive_id": "1zzZY5CVt3pokymdMxhrY-h3KoW2ccvar",
+      "url": "https://drive.google.com/file/d/1zzZY5CVt3pokymdMxhrY-h3KoW2ccvar/view?usp=drivesdk",
+      "path": "/home/mike/ch03-premium-audit/.runs/gate3/sources/patuxent-electric/site-signin-log.csv",
+      "retrieved_at": "2026-11-03T06:24:16.140Z",
+      "modified_at": "2026-10-22T14:27:50.541Z",
+      "byte_count": 11414,
+      "sha256": "49e585c8512862c1959eefb431419d416e3bf236f0b4004347a4e7bfcc1195b6",
+      "mime_type": "text/csv",
+      "data_rows": 214,
+      "columns": [
+        "date",
+        "employee_id",
+        "name",
+        "site",
+        "signed_in_at"
+      ]
+    },
+    {
+      "id": "payroll-register.csv",
+      "drive_id": "1rpnsNOubZb5fCpElBk8wPAU5lf8LqT6S",
+      "url": "https://drive.google.com/file/d/1rpnsNOubZb5fCpElBk8wPAU5lf8LqT6S/view?usp=drivesdk",
+      "path": "/home/mike/ch03-premium-audit/.runs/gate3/sources/patuxent-electric/payroll-register.csv",
+      "retrieved_at": "2026-11-03T06:24:16.140Z",
+      "modified_at": "2026-10-22T14:24:43.355Z",
+      "byte_count": 493,
+      "sha256": "1dd09ea917394706df1c0166ba3869cdb20820b0e7605c500d0a11d3f6263e71",
+      "mime_type": "text/csv",
+      "data_rows": 7,
+      "columns": [
+        "employee_id",
+        "name",
+        "position",
+        "wages_paid",
+        "travel_days",
+        "travel_allowance_paid"
+      ]
+    },
+    {
+      "id": "field-notes.md",
+      "drive_id": "1ffTc3p664aUqgxSYHxAHXLHj0wGkemBh",
+      "url": "https://drive.google.com/file/d/1ffTc3p664aUqgxSYHxAHXLHj0wGkemBh/view?usp=drivesdk",
+      "path": "/home/mike/ch03-premium-audit/.runs/gate3/sources/patuxent-electric/field-notes.md",
+      "retrieved_at": "2026-11-03T06:24:16.140Z",
+      "modified_at": "2026-10-22T14:24:40.561Z",
+      "byte_count": 446,
+      "sha256": "6055df5e294c902b884ece23e30a9b424f3f1df801e5c97c39eb12b93453d72e",
+      "mime_type": "text/markdown"
+    },
+    {
+      "id": "business-description.md",
+      "drive_id": "1rlhBvA_oIrQZx4W0yUpHC5Fhp39dSZYA",
+      "url": "https://drive.google.com/file/d/1rlhBvA_oIrQZx4W0yUpHC5Fhp39dSZYA/view?usp=drivesdk",
+      "path": "/home/mike/ch03-premium-audit/.runs/gate3/sources/patuxent-electric/business-description.md",
+      "retrieved_at": "2026-11-03T06:24:16.140Z",
+      "modified_at": "2026-10-22T14:24:38.367Z",
+      "byte_count": 424,
+      "sha256": "ab025cd6d057708188e0060ef2309e64e990cdbbb25e4fe97402af6cf5434bfd",
+      "mime_type": "text/markdown"
+    },
+    {
+      "id": "application.md",
+      "drive_id": "1PeZVBAsMdsAHNreQLoFBrhJ3L2f3ro9O",
+      "url": "https://drive.google.com/file/d/1PeZVBAsMdsAHNreQLoFBrhJ3L2f3ro9O/view?usp=drivesdk",
+      "path": "/home/mike/ch03-premium-audit/.runs/gate3/sources/patuxent-electric/application.md",
+      "retrieved_at": "2026-11-03T06:24:16.141Z",
+      "modified_at": "2026-10-22T14:24:36.653Z",
+      "byte_count": 397,
+      "sha256": "55f0c7b086ac550f0f8b98a9d22aa906ffe4005e2c8259fd5d9fe72e2d2bd07e",
+      "mime_type": "text/markdown"
+    },
+    {
+      "id": "guide",
+      "drive_id": "1L5MxLny7erhjSwCvl43DTSmAt3wgv22j",
+      "url": "https://drive.google.com/file/d/1L5MxLny7erhjSwCvl43DTSmAt3wgv22j/view?usp=drivesdk",
+      "path": "/home/mike/ch03-premium-audit/.runs/gate3/sources/guide.md",
+      "retrieved_at": "2026-11-03T06:24:18.728Z",
+      "modified_at": "2026-10-22T14:23:33.232Z",
+      "byte_count": 3555,
+      "sha256": "89480f691737a0e8a762a836b8412476e0ed9d0b37639eb898e2826771c1dba8",
+      "mime_type": "text/markdown"
+    },
+    {
+      "id": "interview-2",
+      "path": "/home/mike/ch03-premium-audit/interviews/interview-2.md",
+      "url": "local:interviews/interview-2.md",
+      "retrieved_at": "2026-11-03T06:28:07.754231+00:00",
+      "sha256": "69963d4e448a0a4f9fa2e327fd35bc184518c52b0c5c6986635614c5a59229b7"
+    }
+  ]
+}

@@ -291,6 +291,12 @@ class Audit:
         require(any(value > 0 for value in totals.values()), 'No supported positive payroll; incomplete allocation')
         for decision in self.decisions:
             decision['evidence'] = self.evidence(decision['evidence'])
+        notes = []
+        for note in c.get('case_notes', []):
+            require(all(isinstance(note.get(key), str) and note[key].strip()
+                        for key in ('subject', 'detail', 'question')), 'Case evidence requires subject, detail and question')
+            notes.append(dict(subject=note['subject'], detail=note['detail'],
+                              question=note['question'], evidence=self.evidence(note['evidence'])))
         different = {k: v for k, v in totals.items() if v} != {k: v for k, v in reported.items() if v}
         return dict(slug=c['slug'], employer=c['employer'], audit_start=str(self.start), audit_end=str(self.end),
                     status='draft; final sign-off not established',
@@ -300,7 +306,7 @@ class Audit:
                     rationale_refs=self.codes, baseline=fmt(self.total_baseline), net_adjustment=fmt(net),
                     governing_before_office={k: fmt(v) for k, v in sorted(direct.items())},
                     entries=self.entries, adjustments=self.adjustments, decisions=self.decisions,
-                    issues=self.issues, rule_refs=self.rules, sources=list(self.sources.values()))
+                    issues=self.issues, case_notes=notes, rule_refs=self.rules, sources=list(self.sources.values()))
 
     def dispatcher(self, p):
         require('route_weeks' in self.case, 'Dispatcher weekly payroll/route records required')
@@ -441,6 +447,15 @@ def render(ledgers):
                        '; difference ' + fmt(after - before) + '.']
         report += ['']
         questions += ['## ' + ledger['employer'], '']
+        if ledger.get('case_notes'):
+            report += ['Case-specific evidence and proposed treatment:', '']
+        for number, note in enumerate(ledger.get('case_notes', []), 1):
+            ref = slug + '-evidence-' + str(number)
+            report += ['- ' + ref + ' / ' + note['subject'] + ': ' + note['detail'] +
+                       ' Sources: ' + ', '.join(note['evidence']) + '.']
+            questions += ['- ' + ref + ' / ' + note['subject'] + ': ' + note['question'] +
+                          ' Confirm supporting records: ' + ', '.join(note['evidence']) + '.']
+        report += ['']
         for d in ledger['decisions']:
             report += ['- ' + d['subject'] + ': ' + d['reason'] + '. Evidence: ' + ', '.join(d['evidence']) + '.']
             questions += ['- Confirm ' + d['subject'] + ': ' + d['reason'] + '. Confirm the completeness and accuracy of ' + ', '.join(d['evidence']) + '.']
