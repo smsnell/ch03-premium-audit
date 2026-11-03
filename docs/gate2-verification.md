@@ -1,0 +1,60 @@
+# Gate 2 verification
+
+Gate 1 passed; Gate 2 implementation and focused checks completed on 2026-11-03. Stopped for owner review. Gate 3 six-employer deliverables and the final integrated review have not been performed. Business open items remain unresolved.
+
+## Implemented
+
+- `skills/class-code-assistant/SKILL.md` with workflow, error behavior, source freshness requirements, and input/rule references.
+- Standard-library Python helper `skills/class-code-assistant/scripts/audit.py`: agent-normalized case inputs, source-hash validation, deterministic Decimal calculations, CSV/report/questions/ledger generation, and atomic publication into a new output directory.
+- `tests/test_audit.py`: 28 focused regression tests, using synthetic evidence rather than employer answer lookups.
+- README live-agent invocation and calculation-replay commands for one/multiple/new employers; original interview rule retained.
+
+Sol 6.1 performed the Gate 1 inventory and bounded Gate 2 helper/tests implementation. Astra High owned policy integration, input contract, Skill/README, and focused integration verification. No comprehensive completion review was substituted for the planned Gate 4 review.
+
+## Checks and results
+
+| Check | Result |
+| --- | --- |
+| `python3 -B -m unittest discover -s tests -v` | 28 passed |
+| Skill creator `quick_validate.py skills/class-code-assistant` | Skill is valid |
+| Two-case CLI run using fresh Gate 1 captures | Passed; output in `.runs/gate2/final-review-drafts/` |
+| CSV headers, expected totals, provisional status, null owner amounts, source/adjustment question coverage | Passed for both cases |
+| Local skill scanner 2.0.13, balanced policy, detailed Markdown, fail-on-high | Exit 0; final scan one informational finding only |
+| Manual Skill/code inspection | No source-content execution, network calls in helper, credential access, or destructive command behavior. Output names constrained; existing output directories refused. Agent retrieval is read-only. |
+| Entire active capture | `entire session current --json`: caller-env, active; records touched Gate 1/2 files. Implementation is not yet committed or checkpoint-linked to a submitted revision. |
+
+Tests cover 4/5 site days, 14/15 roof days, zero-roof evidence, duplicates/out-of-period dates, governing totals before office transfers, explicit fallback for tied/missing governing codes, 60% per-payment half-up cents, full-period certificates/aliases, election validity/missing elections, working-owner basis, $47 allowance/zero-day anomaly, 1/2 weekly ride days/site independence, receipts below/exactly 40%/period mismatch, unknown amounts, confirmation isolation, invalid money/missing inputs, code-reference rendering, payroll reconciliation, changed-source fingerprints, unsafe slugs, and preservation of prior outputs. Application/register total disagreement becomes an explicit issue rather than invented reconciliation; weekly/register disagreement fails until resolved.
+
+## Two review cases
+
+Reproduce calculations while retained local captures are available:
+
+```bash
+python3 -B skills/class-code-assistant/scripts/audit.py \
+  --case .runs/gate2/bay-crest-exteriors.json \
+  --case .runs/gate2/harbor-point-legal.json \
+  --output-dir .runs/gate2/new-review-drafts
+```
+
+This is a replay of the captures retrieved during this session, not a new live audit retrieval. Local `.runs/` files are ignored run artifacts; a fresh clone/live run must retrieve sources and prepare reviewed mappings again.
+
+| Employer | Allocated known payroll | Decision and open items |
+| --- | --- | --- |
+| Bay Crest Exteriors | C-110 $44,812.35; R-310 $450,480.60; R-320 $46,205.10 | Reject reported split based on crew/site logs: seven workers meet the roof threshold, including Rafael at exactly 15 days; Jamal has nine roof days; Teresa's nine site days transfer her whole pay. Governing field payroll is $382,049.70 roofing versus $46,205.10 siding before office transfers. P2 application remains explicit; Philip's missing election and unknown remuneration remain open. |
+| Harbor Point Legal | C-110 $425,148.16 | Provisionally accept reported employee split under P1 based on Nadia's litigation-duty clarification plus logs/notes. Tomas's six visits remain in the input and report's exception. Catherine's missing election and unknown remuneration remain open. |
+
+The generated reports state code-level differences explicitly. Applications do not provide named employee splits, so the helper does not fabricate per-person employer classifications: those baseline codes are labelled unspecified unless separately evidenced. Each referenced source and allocation adjustment has a named confirmation question. Known payroll reconciles, but unknown owners are not treated as verified zero.
+
+## Scan dispositions
+
+Final detailed report: `.runs/gate2/skill-scan.md` (local-only scan, no cloud analyzers).
+
+- Initial LOW `PYCACHE_FILES_DETECTED`, `scripts/__pycache__`: fixed by removing only generated bytecode and rerunning tests with `-B`; final scan has no LOW finding.
+- INFO `MANIFEST_MISSING_LICENSE`, `SKILL.md`: accepted for this gate; the owner has not selected a redistribution license, and the agent must not invent one.
+- The scanner emitted a harmless telemetry-device-ID persistence warning and used an in-memory identifier. Exit status was 0. A scan pass is not security certification.
+
+## Limits and next acceptance gate
+
+The helper validates normalized evidence and arithmetic, not arbitrary prose interpretation or proof of live retrieval. Agent review must reconcile every normalized mapping to the source. Partial payroll weeks require explicit evidence-backed resolution. Confirmation records update only the addressed issue's recorded status and never confer automatic audit approval. All six employers' unresolved cases and the five missing owner-election forms remain documented in the plan; only Bay and Harbor were run here. Priority calls remain Severn and Larkspur.
+
+`Planning Complete` was pushed as `f1fa5a7`, with Entire checkpoint `01M6FZWNXGZAF1EHM4EEAGF18S`. Gate 2 changes are local for review. Next action requires owner acceptance before Gate 3; no further commit, push, or audit sign-off is implied.

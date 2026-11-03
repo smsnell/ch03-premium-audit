@@ -1,6 +1,6 @@
 # Implementation plan
 
-Status: owner approved the revised plan, P1–P7 as provisional treatments, and the draft-output contract on 2026-11-03. Authorized scope: complete Gate 1, proceed through Gate 2 if checks pass, and stop for owner review or material blockers. This approval does not resolve employer open items or unknown owner amounts.
+Status: owner approved the revised plan, P1–P7 as provisional treatments, and the draft-output contract on 2026-11-03. Authorized scope: complete Gate 1, proceed through Gate 2 if checks pass, and stop for owner review or material blockers. This approval does not resolve employer open items or unknown owner amounts. Gate 1 passed and Gate 2 implementation/checks are complete; stopped for owner review. See `docs/gate1-verification.md` and `docs/gate2-verification.md`.
 
 ## Scope and evidence
 
