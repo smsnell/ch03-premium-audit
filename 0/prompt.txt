@@ -1,0 +1,21 @@
+Copy those two files to my Desktop for my review.
+
+---
+
+Grab the audit report, and both gate verification files and copy them to my Windows desktop.
+
+---
+
+Gates 1 through 2 look good after my review. I accept them. Update PROJECT-TRACKER.md with results, verification, open issues, and next steps. Commit and push as "G2 Complete", update tokens after. Then complete Gate 3; all six outputs, fresh end to end runs, new-employer and changed-source checks, and clearer case-specific report evidence. Preserve unresolved statuses, update the tracker, and stop for my review before Gate 4.
+
+---
+
+Copy those 3 aforementioned files to my Windows Desktop for my review.
+
+---
+
+No the newest audit report, audit questions, and the gate 3 verification files.
+
+---
+
+Based on my review Gate 3 is accepted for progression. Update the project tracker, commit and push as "G3 Complete", update the new tokens. Then Complete Gate 4: review against requirements, fix material findings, consolidate repetitive reports/questions without losing traceability, separate employer confirmations from internal decisions, and verify confirmations affect only the intended case. Preserve unresolved audit issues, rerun checks, update the tracker, and stop for my final review.

@@ -1,0 +1,17 @@
+{
+  "tool_use_id": "01a1a013-a2c1-7bd3-9b5f-ba409e16dae2",
+  "agent_id": "01a1a013-a2c1-7bd3-9b5f-ba409e16dae2",
+  "subagent_type": "default",
+  "files": [
+    "docs/gate3-source-run.md"
+  ],
+  "token_usage": {
+    "input_tokens": 81788,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 1216256,
+    "output_tokens": 15364,
+    "api_call_count": 20
+  },
+  "started_at": "2026-11-03T01:23:25.732691043-05:00",
+  "completed_at": "2026-11-03T01:30:06.387511851-05:00"
+}

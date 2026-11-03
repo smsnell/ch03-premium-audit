@@ -1,0 +1,71 @@
+{
+  "cli_version": "0.12.2",
+  "checkpoint_id": "01M6G29RXZ14YG1QDSFMG0VN3P",
+  "session_id": "01a19fc2-7e8e-7312-982c-a399477e4d95",
+  "strategy": "manual-commit",
+  "created_at": "2026-11-03T06:42:18.76646139Z",
+  "branch": "main",
+  "checkpoints_count": 3,
+  "save_step_count": 4,
+  "files_touched": [
+    "IMPLEMENTATION-PLAN.md",
+    "PROJECT-TRACKER.md",
+    "README.md",
+    "deliverables/audit-questions.md",
+    "deliverables/audit-report.md",
+    "deliverables/codes/annapolis-courier.csv",
+    "deliverables/codes/bay-crest-exteriors.csv",
+    "deliverables/codes/harbor-point-legal.csv",
+    "deliverables/codes/larkspur-lane-bistro.csv",
+    "deliverables/codes/patuxent-electric.csv",
+    "deliverables/codes/severn-homebuilders.csv",
+    "deliverables/ledgers/annapolis-courier.json",
+    "deliverables/ledgers/bay-crest-exteriors.json",
+    "deliverables/ledgers/harbor-point-legal.json",
+    "deliverables/ledgers/larkspur-lane-bistro.json",
+    "deliverables/ledgers/patuxent-electric.json",
+    "deliverables/ledgers/severn-homebuilders.json",
+    "docs/gate3-reuse-checks.md",
+    "docs/gate3-source-run.md",
+    "docs/gate3-verification.md",
+    "skills/class-code-assistant/references/input-contract.md",
+    "skills/class-code-assistant/scripts/audit.py",
+    "tests/test_gate3.py"
+  ],
+  "agent": "Codex",
+  "model": "gpt-6-astra",
+  "turn_id": "ff97accdab81",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 60784,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 8648960,
+    "output_tokens": 9740,
+    "api_call_count": 42,
+    "subagent_tokens": {
+      "input_tokens": 105462,
+      "cache_creation_tokens": 0,
+      "cache_read_tokens": 1650688,
+      "output_tokens": 21831,
+      "api_call_count": 33
+    },
+    "subagent_tokens_complete": true
+  },
+  "redaction": {
+    "replacements": 723,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 0,
+      "credentialed_uri": 0,
+      "entropy": 723,
+      "key_context": 0,
+      "provider_token": 0,
+      "shell_stdin": 0
+    }
+  },
+  "session_metrics": {
+    "turn_count": 9
+  }
+}
