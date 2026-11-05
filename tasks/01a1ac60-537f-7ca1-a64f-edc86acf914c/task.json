@@ -1,0 +1,17 @@
+{
+  "tool_use_id": "01a1ac60-537f-7ca1-a64f-edc86acf914c",
+  "agent_id": "01a1ac60-537f-7ca1-a64f-edc86acf914c",
+  "subagent_type": "default",
+  "files": [
+    "tests/test_reporting.py"
+  ],
+  "token_usage": {
+    "input_tokens": 38792,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 456832,
+    "output_tokens": 3776,
+    "api_call_count": 12
+  },
+  "started_at": "2026-11-05T10:42:38.950311505-05:00",
+  "completed_at": "2026-11-05T10:49:56.723384703-05:00"
+}
