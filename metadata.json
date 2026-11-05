@@ -1,0 +1,76 @@
+{
+  "cli_version": "0.12.2",
+  "checkpoint_id": "01M6MPGCWHAEFP6JXDC3BEKM7G",
+  "strategy": "manual-commit",
+  "branch": "main",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".runs/gate1/manifest.json",
+    ".runs/gate1/sources/annapolis-courier/application.md",
+    ".runs/gate1/sources/annapolis-courier/business-description.md",
+    ".runs/gate1/sources/annapolis-courier/field-notes.md",
+    ".runs/gate1/sources/annapolis-courier/payroll-register.csv",
+    ".runs/gate1/sources/annapolis-courier/route-log.csv",
+    ".runs/gate1/sources/annapolis-courier/weekly-payroll.csv",
+    ".runs/gate1/sources/bay-crest-exteriors/application.md",
+    ".runs/gate1/sources/bay-crest-exteriors/business-description.md",
+    ".runs/gate1/sources/bay-crest-exteriors/crew-timesheets.csv",
+    ".runs/gate1/sources/bay-crest-exteriors/field-notes.md",
+    ".runs/gate1/sources/bay-crest-exteriors/payroll-register.csv",
+    ".runs/gate1/sources/bay-crest-exteriors/site-signin-log.csv",
+    ".runs/gate1/sources/guide.md",
+    ".runs/gate1/sources/harbor-point-legal/application.md",
+    ".runs/gate1/sources/harbor-point-legal/business-description.md",
+    ".runs/gate1/sources/harbor-point-legal/field-notes.md",
+    ".runs/gate1/sources/harbor-point-legal/payroll-register.csv",
+    ".runs/gate1/sources/harbor-point-legal/site-signin-log.csv",
+    ".runs/gate1/sources/larkspur-lane-bistro/application.md",
+    ".runs/gate1/sources/larkspur-lane-bistro/business-description.md",
+    ".runs/gate1/sources/larkspur-lane-bistro/field-notes.md",
+    ".runs/gate1/sources/larkspur-lane-bistro/gross-receipts.csv",
+    ".runs/gate1/sources/larkspur-lane-bistro/payroll-register.csv",
+    ".runs/gate1/sources/patuxent-electric/application.md",
+    ".runs/gate1/sources/patuxent-electric/business-description.md",
+    ".runs/gate1/sources/patuxent-electric/field-notes.md",
+    ".runs/gate1/sources/patuxent-electric/payroll-register.csv",
+    ".runs/gate1/sources/patuxent-electric/site-signin-log.csv",
+    ".runs/gate1/sources/severn-homebuilders/application.md",
+    ".runs/gate1/sources/severn-homebuilders/business-description.md",
+    ".runs/gate1/sources/severn-homebuilders/field-notes.md",
+    ".runs/gate1/sources/severn-homebuilders/insurance-certificates.csv",
+    ".runs/gate1/sources/severn-homebuilders/payroll-register.csv",
+    ".runs/gate1/sources/severn-homebuilders/site-signin-log.csv",
+    ".runs/gate1/sources/severn-homebuilders/subcontractor-payments.csv"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 1541,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 371072,
+    "output_tokens": 330,
+    "api_call_count": 4,
+    "subagent_tokens_complete": false
+  },
+  "redaction": {
+    "replacements": 745,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 0,
+      "credentialed_uri": 0,
+      "entropy": 745,
+      "key_context": 0,
+      "provider_token": 0,
+      "shell_stdin": 0
+    }
+  }
+}
