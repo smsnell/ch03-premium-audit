@@ -8,16 +8,23 @@ Keep this file concise: current state, next gate, material blockers, and one cum
 - Accepted scope: individual-record completeness; daily allowance caps; explicit owner uncertainty; supported governing field eligibility; actual time/pay CG-07 splits; priority-ordered employer questions with visible individual outcomes and linked traceability; readable currency; the evidence brief and owner judgment record. See [Gate A](docs/gate-a-verification.md), [Gate B](docs/gate-b-verification.md) and [final acceptance](docs/final-acceptance.md).
 - [JUDGMENTS.md](JUDGMENTS.md) now says the owner is judging **allocations supplied by the employers**, without independently recalculating every record. Six provisional employer decisions and the Severn-first/Larkspur-second call ranking remain separate. The owner-confirmed Severn addition is **$52,260.78**; recording checks are [separate](docs/judgments-verification.md).
 - Business state unchanged: six payroll allocations preserved, **16 issues open**, **five unknown owner amounts**, **131 original evidence notes**, **zero case confirmations**. Missing evidence and P1–P7 limitations remain visible; follow-up evidence and scoped auditor decisions are still required.
-- Lead owns integration/final review; Sol 6.1 supplied bounded implementation, tests and recording checks. Final checks passed: **86 tests**, exact reproduction of all 15 generated files, Skill validation and local scan (license INFO only). Publication is next; actual commit/checkpoint details and the refreshed accounting cutoff will be recorded after the first push.
+- Lead owns integration/final review; Sol 6.1 supplied bounded implementation, tests and recording checks. Final checks passed: **86 tests**, exact reproduction of all 15 generated files, Skill validation and local scan (license INFO only). Accepted work was committed as **`9171a15`** and pushed to `origin/main` on November 5, 2026. Entire checkpoint **`01M6PWGY73Z5NW6XYSQTDVT3XA`** synced; the outgoing checkpoint queue was empty afterward. This separate tracker update records post-push accounting; no further implementation is pending within the accepted scope.
 
-## Cumulative usage — prior snapshot; refresh after publication
+## Cumulative usage — available post-push snapshot
 
-| Metric | Project estimate | Reported cumulative actual |
+| Metric | Original project estimate | Latest record |
 | --- | ---: | ---: |
 | Total work time | 4 hours | **Approximately 8 hours, a user-supplied estimate—not measured elapsed or active time** |
-| Tokens | 50,000,000 | **28,653,026**, partial coverage; includes cache reads and reported workers |
+| Tokens | 50,000,000 | **61,622,182 reported tokens**, partial coverage; includes cache reads and reported workers |
 
-- G4 Complete: `575f253`, successfully pushed to origin/main on 2026-11-03. Entire checkpoint `01M6G3ZFXW7A7R4EYEKQTZWS25` synced and transcript verified. This follow-up records the post-push evidence and usage cutoff.
-- Measurement: Entire caller-session `01a19fc2-7e8e-7312-982c-a399477e4d95`, post-push session reading **23,227,476** = 786,248 input + 22,384,384 cache-read + 56,844 output. The pre-push reading separately reported **5,425,550 worker tokens**, yielding **28,653,026** combined; no repeated cumulative reading is added twice. Post-push output dropped the worker subtotal, so the latest reported subtotal is retained separately.
-- Coverage: setup/other sessions and in-flight lead/worker usage may be missing. The current checkpoint's 5,692,297 tokens overlap session usage and are **not added**. These are final available measurements, not a claimed complete billed total; do not substitute estimates for unavailable active time.
-- Measurement recorded: 2026-11-03T07:13:09.646268+00:00. Refresh at any later push if a newer cumulative reading is available; retain this cutoff rather than claiming bookkeeping calls are included.
+Distinct locally tracked sessions, using `entire session tokens <id> --json` after the accepted-work push:
+
+| Session | Reported total | Worker tokens already included |
+| --- | ---: | ---: |
+| `01a19e6d-0d51-7210-816b-7149816a527f` | 386,820 | No separate subtotal reported |
+| `01a19fc2-7e8e-7312-982c-a399477e4d95` | 31,924,442 | 5,946,612 |
+| `01a1a965-9cb6-7713-aa6b-d3f517e8759c` | 29,310,920 | 6,244,700 |
+
+- **Snapshot recorded: 2026-11-05 22:16:43 UTC**, after push `9171a15`. Each distinct session total is counted once; its worker subtotal is already included. Checkpoint totals and the superseded 28,653,026-token snapshot are **not added**. The increase includes later work, refreshed worker reporting and an earlier separately tracked session; it is not solely this publication pass.
+- **Coverage limitations:** these are the three sessions visible to local Entire accounting and workers captured in their reported totals. Untracked/setup sessions, uncaptured workers, stale or in-flight usage, and work after the snapshot may be missing. The accounting commit, second push and final response are not claimed to be fully included. This is reported token volume including cache reads, not unique new tokens, a complete billed total or a cost calculation. Raw readings are retained locally in `.runs/final-acceptance/*tokens-after-push.json` and `sessions-after-push.json`.
+- **Time limitation:** approximately **8 hours total work is the owner's estimate**, not independently measured active work or elapsed time. Session timestamps do not establish hours worked.
