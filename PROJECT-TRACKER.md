@@ -4,17 +4,17 @@ Keep this file concise: current state, next gate, material blockers, and one cum
 
 ## Current context
 
-- Gates 1–4 software/package accepted; final question corrections verified and **G4 Complete pushed as 575f253**. See [Gate 4 verification](docs/gate4-verification.md). Software acceptance is not audit sign-off.
-- Verified: **45 tests pass**, Skill validation passes, final local scan exit 0 (license INFO only). Regenerated six CSVs and six ledgers byte-identical; 131 notes retained. Human review files 34.55% shorter than Gate 3.
-- Fixed: employer/issue-scoped confirmations, calculated allowance classes, field-owner destination, and factual/internal question separation. Final corrections ask Dana about duties/site days, Raymond about reported absence of an election, and each employer about actual audit-period applicability.
-- Open: all 16 audit issues unchanged: Harbor exception, governing ordering/application, Kent identity/coverage, **five unknown owner amounts**, Kyle's $390 and receipts proxy. No case confirmations added. P1–P7 provisional; priority calls Severn and Larkspur.
-- Completion: checkpoint 01M6G3ZFXW7A7R4EYEKQTZWS25 synced; stored transcript contains final request, 45-test result and regeneration. Next: business evidence review. Business evidence and scoped auditor decisions remain future work; no audit signed off. Astra High integration and bounded Sol 6.1 reporting work complete.
+- **Owner accepted Gate B and all completed reporting/judgment work on November 5, 2026.** Gate A was already accepted. The owner authorized final checks, commit/push, then a separate token-accounting tracker update and push. **Software acceptance is not audit sign-off.**
+- Accepted scope: individual-record completeness; daily allowance caps; explicit owner uncertainty; supported governing field eligibility; actual time/pay CG-07 splits; priority-ordered employer questions with visible individual outcomes and linked traceability; readable currency; the evidence brief and owner judgment record. See [Gate A](docs/gate-a-verification.md), [Gate B](docs/gate-b-verification.md) and [final acceptance](docs/final-acceptance.md).
+- [JUDGMENTS.md](JUDGMENTS.md) now says the owner is judging **allocations supplied by the employers**, without independently recalculating every record. Six provisional employer decisions and the Severn-first/Larkspur-second call ranking remain separate. The owner-confirmed Severn addition is **$52,260.78**; recording checks are [separate](docs/judgments-verification.md).
+- Business state unchanged: six payroll allocations preserved, **16 issues open**, **five unknown owner amounts**, **131 original evidence notes**, **zero case confirmations**. Missing evidence and P1–P7 limitations remain visible; follow-up evidence and scoped auditor decisions are still required.
+- Lead owns integration/final review; Sol 6.1 supplied bounded implementation, tests and recording checks. Final checks passed: **86 tests**, exact reproduction of all 15 generated files, Skill validation and local scan (license INFO only). Publication is next; actual commit/checkpoint details and the refreshed accounting cutoff will be recorded after the first push.
 
-## Cumulative usage — final available snapshot
+## Cumulative usage — prior snapshot; refresh after publication
 
 | Metric | Project estimate | Reported cumulative actual |
 | --- | ---: | ---: |
-| Agent time | 4 hours | Unknown — no verified cumulative measurement |
+| Total work time | 4 hours | **Approximately 8 hours, a user-supplied estimate—not measured elapsed or active time** |
 | Tokens | 50,000,000 | **28,653,026**, partial coverage; includes cache reads and reported workers |
 
 - G4 Complete: `575f253`, successfully pushed to origin/main on 2026-11-03. Entire checkpoint `01M6G3ZFXW7A7R4EYEKQTZWS25` synced and transcript verified. This follow-up records the post-push evidence and usage cutoff.

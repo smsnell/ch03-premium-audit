@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Deterministic allocation from evidence-backed normalized JSON; no source prose execution."""
 import argparse
+from collections import Counter, defaultdict
+import csv
 from datetime import date, timedelta, datetime
 from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
 import hashlib
@@ -17,6 +19,9 @@ from reporting import render
 
 CENT = Decimal('0.01')
 ZERO = Decimal('0.00')
+# Contractor field trades described by the company guide; business evidence must
+# still establish which of these the employer actually performs.
+FIELD_TRADE_CODES = {'R-310', 'R-320', 'L-620', 'H-420', 'E-510'}
 
 
 class InputError(ValueError):
@@ -94,6 +99,7 @@ class Audit:
         guide_id = case['guide_source']
         self.evidence([guide_id])
         guide = (self.base / self.sources[guide_id]['path']).read_text()
+        self.guide_paragraphs = set(re.findall(r'\*\*(CG-\d+)\.', guide))
         self.codes = dict((code, paragraph) for paragraph, code in re.findall(
             r'\*\*(CG-\d+)\.\s+([A-Z]-\d{3})\s', guide))
         require(self.codes, 'No code-description paragraphs found in guide')
@@ -141,8 +147,131 @@ class Audit:
                 net=fmt(sum(after.values(), ZERO) - before),
                 evidence=self.evidence(evidence), reason=reason))
 
+    def csv_records(self, check):
+        """Read the independently captured source, never an inventory of normalized rows."""
+        self.evidence([check['source']])
+        source = self.sources[check['source']]
+        with (self.base / source['path']).open(newline='', encoding='utf-8-sig') as stream:
+            reader = csv.DictReader(stream)
+            columns = reader.fieldnames
+            require(columns and len(set(columns)) == len(columns), 'Missing/duplicate CSV headers')
+            require(set(check['columns'].values()) <= set(columns), 'Missing reconciliation CSV columns')
+            if check.get('work_column'):
+                require(check['work_column'] in columns, 'Missing roofing work column')
+            rows = list(reader)
+        require(all(None not in row and all(v is not None for v in row.values()) for row in rows),
+                'Malformed reconciliation CSV: ' + check['source'])
+        if 'data_rows' in source:
+            require(len(rows) == source['data_rows'], 'Captured CSV row count mismatch: ' + check['source'])
+        return rows
+
+    def check_completeness(self):
+        required = dict(people=('id', 'name', 'pay'), signin=('person', 'date'),
+                        roofing=('person', 'date', 'hours'), route_weeks=('person', 'start', 'pay'),
+                        allowances=('person', 'amount', 'days'), sub_invoices=('id', 'name', 'date', 'amount'),
+                        certificates=('name', 'start', 'end'))
+        c = self.case
+        controls = c.get('completeness')
+        require(isinstance(controls, dict), 'Source-backed completeness declarations required')
+        for name in required:
+            require(name in c and isinstance(c[name], list), 'Explicit record array required: ' + name)
+        people = {p['id']: p for p in c['people']}
+        dispatchers = {pid for pid, p in people.items() if p['role'] == 'dispatcher'}
+        off_register = {pid for pid, p in people.items() if p.get('off_register') is True}
+        for name, fields in required.items():
+            control = controls.get(name, {})
+            require(isinstance(control, dict), 'Invalid completeness declaration: ' + name)
+            status = control.get('status')
+            if status in ('not_applicable', 'unavailable'):
+                self.evidence(control.get('evidence'))
+                require(not c[name], 'Empty-evidence declaration conflicts with records: ' + name)
+                require(status != 'unavailable' or name == 'certificates',
+                        'Unavailable mandatory records: ' + name)
+                require(name != 'people' and not (name == 'route_weeks' and dispatchers),
+                        'Required records cannot be not applicable: ' + name)
+                continue
+            require(status == 'complete', 'Explicit completeness status required: ' + name)
+            checks = control.get('checks')
+            require(isinstance(checks, list) and checks, 'Source CSV reconciliation required: ' + name)
+            require(all(isinstance(check, dict) and isinstance(check.get('columns'), dict) for check in checks),
+                    'Invalid source reconciliation mapping: ' + name)
+            keys = tuple(sorted(checks[0]['columns']))
+            require(set(fields) <= set(keys), 'Missing reconciliation fields: ' + name)
+            allowed = set(fields) | ({'id', 'date'} if name == 'allowances' else set())
+            require(set(keys) <= allowed, 'Unsupported reconciliation fields: ' + name)
+            if name == 'allowances' and any(r.get('date') for r in c[name]):
+                require('date' in keys, 'Dated allowances require source date reconciliation')
+
+            def values(row):
+                return tuple('' if row.get(k) is None else str(row[k]) for k in keys)
+
+            expected = Counter()
+            seen_sources = set()
+            for check in checks:
+                require(tuple(sorted(check['columns'])) == keys, 'Inconsistent reconciliation mappings: ' + name)
+                require(check['source'] not in seen_sources, 'Duplicate reconciliation source: ' + name)
+                seen_sources.add(check['source'])
+                for raw in self.csv_records(check):
+                    row = {key: raw[column] for key, column in check['columns'].items()}
+                    if name == 'people' and row['id'] in off_register and row['pay'] == '':
+                        continue
+                    if name == 'signin' and row['person'] == '':
+                        continue  # Nonemployee visitors remain in the captured record.
+                    if name == 'roofing' and check.get('work_column') and raw[check['work_column']] != check.get('roof_value', 'roofing'):
+                        continue
+                    if name == 'route_weeks' and row['person'] not in dispatchers:
+                        require(row['person'] in people, 'Unknown employee in weekly source')
+                        continue
+                    if name == 'allowances' and money(row['amount']) == ZERO:
+                        continue
+                    expected[values(row)] += 1
+            normalized = [r for r in c[name] if not (name == 'people' and r['id'] in off_register)]
+            require(all(all(k in r for k in fields) for r in normalized), 'Missing normalized fields: ' + name)
+            actual = Counter(values(r) for r in normalized)
+            require(expected == actual,
+                    'Source reconciliation failed for ' + name + ': missing ' + str(list((expected - actual).elements())[:5]) +
+                    '; extra/changed ' + str(list((actual - expected).elements())[:5]))
+        if 'receipts' in c or any(p['role'] == 'catering' for p in people.values()):
+            control = controls.get('receipts', {})
+            require(control.get('status') == 'complete' and control.get('checks'),
+                    'Source receipts reconciliation required')
+            gross, catering, seen = ZERO, ZERO, set()
+            for check in control['checks']:
+                mapping = check['columns']
+                require(set(mapping) in ({'gross', 'catering'}, {'dine_in', 'catering'}),
+                        'Receipts require gross/catering or dine_in/catering columns')
+                require(check['source'] not in seen, 'Duplicate receipts reconciliation source')
+                seen.add(check['source'])
+                for row in self.csv_records(check):
+                    offsite = money(row[mapping['catering']])
+                    amount = money(row[mapping['gross']]) if 'gross' in mapping else money(row[mapping['dine_in']]) + offsite
+                    require(offsite <= amount, 'Invalid source receipts totals')
+                    gross += amount
+                    catering += offsite
+            require(gross == money(c['receipts']['gross']) and catering == money(c['receipts']['catering']),
+                    'Source reconciliation failed for receipts totals')
+        if dispatchers:
+            check = controls['route_weeks'].get('route_log')
+            require(isinstance(check, dict) and set(check.get('columns', {})) == {'person', 'date'},
+                    'Independent route-log reconciliation required')
+            rides = defaultdict(set)
+            for raw in self.csv_records(check):
+                pid, when = (raw[check['columns'][k]] for k in ('person', 'date'))
+                if pid:
+                    require(pid in people, 'Unknown route-log rider')
+                    if pid in dispatchers:
+                        rides[pid].add(day(when))
+            matched = defaultdict(set)
+            for week in c['route_weeks']:
+                start = day(week['start'])
+                expected = {d for d in rides[week['person']] if start <= d <= start + timedelta(days=6)}
+                require(expected == {day(d) for d in week['ride_dates']}, 'Route dates do not match captured log')
+                matched[week['person']].update(expected)
+            require(all(dates == matched[pid] for pid, dates in rides.items()), 'Route rides lack a matching pay week')
+
     def run(self):
         c = self.case
+        self.check_completeness()
         for item in c.get('open_issues', []):
             self.issue(item['id'], item['subject'], item['treatment'], item['evidence'],
                        None if item.get('amount') is None else fmt(money(item['amount'])),
@@ -153,10 +282,12 @@ class Audit:
             require(p['id'] not in self.people, 'Duplicate person id')
             self.evidence(p['evidence'])
             require(bool(p['name'].strip()), 'Person name required')
-            require(p['role'] in ('direct', 'roofing', 'office', 'dispatcher', 'owner', 'catering'),
+            require(p['role'] in ('direct', 'roofing', 'office', 'dispatcher', 'owner', 'catering', 'split'),
                     'Unmapped employee role: ' + str(p['role']))
+            require('allocations' not in p or p['role'] == 'split',
+                    'CG-07 allocations cannot override a specific house-rule role')
             if p.get('code') is None:
-                require(p['role'] == 'owner' and p.get('off_register') is True,
+                require(p['role'] == 'split' or (p['role'] == 'owner' and p.get('off_register') is True),
                         'Missing work code requires an off-register owner with unknown duties')
             else:
                 self.code(p['code'])
@@ -187,6 +318,7 @@ class Audit:
         for name in ('signin', 'roofing'):
             for row in c.get(name, []):
                 day(row['date'])
+        self.split_rows = self.read_split_records()
         pending = []
         for p in self.people.values():
             refs = p['evidence']
@@ -194,6 +326,9 @@ class Audit:
                 refs = refs + next(i['evidence'] for i in self.issues if i['id'] == p['exception_issue'])
             pay, code, reason = p['_pay'], p['code'], 'Explicit evidence-backed work mapping'
             role = p['role']
+            if role == 'split':
+                self.split_payroll(p)
+                continue
             if role == 'office' and not p.get('contractor'):
                 visits = {day(r['date']) for r in c.get('signin', []) if r['person'] == p['id']
                           and self.start <= day(r['date']) <= self.end}
@@ -222,8 +357,12 @@ class Audit:
                 continue
             elif role == 'owner':
                 refs = refs + self.policy('owner')
-                require(type(p.get('election_valid')) is bool, 'Owner election_valid must be explicit boolean')
-                if p['election_valid']:
+                status = p.get('election_status')
+                require(status in ('unverified', 'included', 'excluded'), 'Explicit owner election_status required')
+                if 'election_valid' in p:
+                    require(type(p['election_valid']) is bool and p['election_valid'] == (status == 'excluded'),
+                            'Contradictory owner election evidence')
+                if status == 'excluded':
                     self.evidence(p.get('election_evidence'))
                     refs += p['election_evidence']
                     require(day(p['election_start']) <= self.start and day(p['election_end']) >= self.end,
@@ -232,19 +371,22 @@ class Audit:
                     reason = 'Valid exclusion election; proposed election-first precedence (P4)'
                     self.issue(p['id'] + '-owner-precedence', p['name'], reason, refs,
                                '0.00', None)
-                elif p.get('off_register'):
+                elif status == 'unverified':
                     self.issue(p['id'] + '-owner-election', p['name'],
                                'P4: retain reported omission provisionally; obtain election, effective dates, duties and remuneration. Unknown amount is not verified zero.', refs)
-                    require(pay is None, 'Off-register missing-election owner amount must remain null')
+                    require(p.get('off_register') is True and pay is None,
+                            'Unverified owner requires explicit unresolved off-register treatment; known register pay needs reviewed resolution')
                     self.decisions.append(dict(subject=p['name'], reason='Unquantified completeness gap', evidence=refs))
                     continue
                 else:
+                    refs += self.evidence(p.get('inclusion_evidence'))
                     require(type(p.get('field_work')) is bool, 'Included owner field_work required')
                     if p['field_work']:
-                        require(code != 'C-110', 'Field-working owner requires a supported trade code')
+                        require(code is not None and code != 'C-110', 'Field-working owner requires a supported trade code')
                         pay = Decimal('63700.00')
                         reason = 'Included working owner with field duties: fixed period basis'
                     else:
+                        require(pay is not None, 'Included non-field owner remuneration is unknown; resolve before allocation')
                         reason = 'Included non-field owner: evidence-backed actual remuneration'
             elif role == 'catering':
                 code, more, reason = self.catering()
@@ -260,9 +402,26 @@ class Audit:
         # Supported trade additions precede governing-code comparison and office transfers.
         self.subcontractors()
         self.allowances()
+        eligible = None
+        eligibility_refs = []
+        if any(count >= 5 for _, count, _ in pending):
+            eligible = c.get('governing_eligibility')
+            require(isinstance(eligible, dict), 'Reviewed governing field-code eligibility required')
+            for code, support in eligible.items():
+                self.code(code)
+                require(code in FIELD_TRADE_CODES, 'Code is not a supported governing field trade')
+                require(isinstance(support.get('reason'), str) and support['reason'].strip(),
+                        'Field-code eligibility requires a reviewed business/guide explanation')
+                refs = self.evidence(support.get('evidence'))
+                require(c['guide_source'] in refs and any(ref != c['guide_source'] for ref in refs),
+                        'Field eligibility requires guide and business evidence')
+                eligibility_refs += refs
+            observed_field_codes = {entry['code'] for entry in self.entries} & FIELD_TRADE_CODES
+            require(observed_field_codes <= set(eligible),
+                    'Governing eligibility omits an allocated field trade; review all field codes')
         direct = {}
         for entry in self.entries:
-            if entry['code'] != 'C-110':
+            if entry['code'] != 'C-110' and (eligible is None or entry['code'] in eligible):
                 direct[entry['code']] = direct.get(entry['code'], ZERO) + money(entry['amount'])
         positive = {key: value for key, value in direct.items() if value > 0}
         winners = [key for key, value in positive.items() if value == max(positive.values())] if positive else []
@@ -273,6 +432,7 @@ class Audit:
             if count >= 5:
                 if governing:
                     code = governing
+                    refs = refs + eligibility_refs
                     reason += '; entire pay to governing field code before office transfers (P2)'
                 else:
                     require(p.get('exception_issue'),
@@ -309,6 +469,10 @@ class Audit:
             if 'audience' in note:
                 require(note['audience'] in ('employer', 'internal'), 'Invalid note audience')
                 notes[-1]['audience'] = note['audience']
+            if 'factual_question' in note:
+                require(isinstance(note['factual_question'], str) and note['factual_question'].strip(),
+                        'Reviewed factual question must be nonempty text')
+                notes[-1]['factual_question'] = note['factual_question']
         different = {k: v for k, v in totals.items() if v} != {k: v for k, v in reported.items() if v}
         return dict(slug=c['slug'], employer=c['employer'], audit_start=str(self.start), audit_end=str(self.end),
                     status='draft; final sign-off not established',
@@ -318,7 +482,73 @@ class Audit:
                     rationale_refs=self.codes, baseline=fmt(self.total_baseline), net_adjustment=fmt(net),
                     governing_before_office={k: fmt(v) for k, v in sorted(direct.items())},
                     entries=self.entries, adjustments=self.adjustments, decisions=self.decisions,
-                    issues=self.issues, case_notes=notes, rule_refs=self.rules, sources=list(self.sources.values()))
+                    issues=self.issues, case_notes=notes, rule_refs=self.rules, sources=list(self.sources.values()),
+                    input_controls=dict(completeness=c['completeness'],
+                        owners=[{k: p[k] for k in ('id', 'pay', 'off_register', 'field_work', 'election_status',
+                                                  'inclusion_evidence', 'election_evidence') if k in p}
+                                for p in c['people'] if p['role'] == 'owner'],
+                        allowance_inputs=c['allowances'],
+                        governing_eligibility=c.get('governing_eligibility'),
+                        time_records=c.get('time_records'),
+                        split_inputs=[{k: p[k] for k in ('id', 'allocations')} for p in c['people']
+                                      if p['role'] == 'split']))
+
+    def read_split_records(self):
+        """Consume every captured time/pay row; no normalized subset can omit a row."""
+        split_ids = {pid for pid, p in self.people.items() if p['role'] == 'split'}
+        declaration = self.case.get('time_records')
+        if not split_ids:
+            require(declaration is None, 'Time records supplied without CG-07 employees')
+            return {}
+        require(isinstance(declaration, dict) and declaration.get('checks'),
+                'CG-07 requires captured actual time/pay records')
+        rows, ids, sources = defaultdict(list), set(), set()
+        for check in declaration['checks']:
+            require(set(check['columns']) == {'id', 'person', 'date', 'code', 'hours', 'pay'},
+                    'CG-07 time/pay columns must include id, person, date, code, hours and pay')
+            require(check['source'] not in sources, 'Duplicate CG-07 source')
+            sources.add(check['source'])
+            for source_row in self.csv_records(check):
+                row = {key: source_row[column] for key, column in check['columns'].items()}
+                require(row['id'].strip() and row['id'] not in ids, 'Duplicate/blank time-record id')
+                ids.add(row['id'])
+                require(row['person'] in split_ids, 'Time record requires a CG-07 employee')
+                require(self.start <= day(row['date']) <= self.end, 'Time record outside audit period')
+                try:
+                    hours = Decimal(row['hours'])
+                except InvalidOperation as exc:
+                    raise InputError('Time-record hours must be numeric') from exc
+                require(hours.is_finite() and hours > 0, 'Time-record hours must be finite and positive')
+                self.code(row['code'])
+                money(row['pay'])
+                rows[row['person']].append(dict(row, source=check['source']))
+        require(set(rows) == split_ids, 'Actual time/pay records missing for a CG-07 employee')
+        return rows
+
+    def split_payroll(self, p):
+        rule = self.policy('division')
+        require('CG-07' in self.guide_paragraphs and self.case['guide_source'] in rule
+                and 'CG-07' in self.rules['division']['citation'],
+                'Division provenance must cite current guide CG-07')
+        after = {self.code(code): money(amount) for code, amount in p.get('allocations', {}).items()}
+        require(len(after) >= 2 and all(amount > 0 for amount in after.values()),
+                'CG-07 requires at least two positive code allocations')
+        # These code families have scenario-specific rules; do not silently bypass them.
+        require(not set(after).intersection({'C-110', 'R-310', 'R-320', 'T-610', 'F-710', 'F-720'}),
+                'CG-07 split involving a special-rule code needs reviewed scenario handling')
+        actual = defaultdict(lambda: ZERO)
+        refs = p['evidence'] + rule
+        for row in self.split_rows[p['id']]:
+            actual[row['code']] += money(row['pay'])
+            refs.append(row['source'])
+        require(dict(actual) == after, 'CG-07 allocations do not reconcile to actual time/pay records')
+        require(sum(after.values(), ZERO) == p['_pay'], 'CG-07 allocations do not reconcile to full employee wages')
+        reason = 'CG-07: code-specific pay from actual time records reconciles to full employee wages'
+        for code, amount in after.items():
+            self.add(p['name'], code, amount, refs, reason)
+        self.person_codes[p['id']] = set(after)
+        self.adjust(p['name'], p['_before'], p['_pay'], after, refs, reason)
+        self.decisions.append(dict(subject=p['name'], reason=reason, evidence=refs))
 
     def dispatcher(self, p):
         require('route_weeks' in self.case, 'Dispatcher weekly payroll/route records required')
@@ -389,11 +619,49 @@ class Audit:
 
     def allowances(self):
         ids = set()
-        for row in self.case.get('allowances', []):
+        dated, rows, aggregate_people, dated_people = {}, [], set(), set()
+        for original in self.case['allowances']:
+            row = dict(original)
             require(row['id'] not in ids, 'Duplicate allowance id')
             ids.add(row['id'])
+            amount = money(row['amount'])
+            days = row['days']
+            require(type(days) is int and days >= 0, 'Allowance days must be nonnegative integer')
+            require(type(row['documented_reimbursement']) is bool, 'Reimbursement basis must be explicit')
+            if row.get('date'):
+                require(self.start <= day(row['date']) <= self.end, 'Allowance date outside audit period')
+            if row['documented_reimbursement'] or days == 0:
+                rows.append(row)
+            elif row.get('date'):
+                require(days == 1, 'Dated allowance must cover exactly one day')
+                dated_people.add(row['person'])
+                dated.setdefault((row['person'], row['date']), []).append(row)
+            else:
+                require(row.get('basis') == 'uniform_daily', 'Aggregate allowance needs uniform daily evidence or dated payments')
+                self.evidence(row.get('basis_evidence'))
+                require(money(row.get('daily_rate')) * days == amount, 'Aggregate allowance does not reconcile to daily rate')
+                require(row['person'] not in aggregate_people, 'Multiple aggregate allowances may overlap; provide dated payments')
+                aggregate_people.add(row['person'])
+                rows.append(row)
+        require(not aggregate_people.intersection(dated_people), 'Aggregate and dated allowances may overlap; provide dated payments')
+        for (_, when), payments in dated.items():
+            if len(payments) == 1:
+                rows.append(payments[0])
+                continue
+            require(len({r.get('code') for r in payments}) == 1, 'Same-day allowance allocation needs one reviewed class')
+            combined = dict(payments[0])
+            combined.update(id=' + '.join(sorted(r['id'] for r in payments)),
+                            amount=fmt(sum((money(r['amount']) for r in payments), ZERO)),
+                            evidence=list(dict.fromkeys(ref for r in payments for ref in r['evidence'])))
+            combined['allocation_evidence'] = list(dict.fromkeys(ref for r in payments for ref in r.get('allocation_evidence', [])))
+            combined['_group_reason'] = ('Combined payments on ' + when + ': ' +
+                '; '.join(r['id'] + ' ' + r['amount'] for r in payments) + '; one $47 worker/day cap')
+            rows.append(combined)
+        for row in rows:
             p = self.people[row['person']]
             refs = row['evidence'] + p['evidence'] + self.policy('allowance')
+            if row.get('basis_evidence'):
+                refs += self.evidence(row['basis_evidence'])
             amount = money(row['amount'])
             days = row['days']
             require(type(days) is int and days >= 0, 'Allowance days must be nonnegative integer')
@@ -411,7 +679,7 @@ class Audit:
                 reason = 'Documented expense reimbursement excluded under CG-03'
             else:
                 excess = max(ZERO, amount - Decimal(47) * days)
-                reason = '$47 per recorded out-of-town day; only excess included'
+                reason = row.get('_group_reason', '$47 per recorded out-of-town day; only excess included')
                 if days == 0 and amount:
                     reason = 'P5: zero-day payment provisionally included absent documented expense basis'
                     self.issue(row['id'] + '-zero-days', p['name'] + ' payment ' + row['id'],

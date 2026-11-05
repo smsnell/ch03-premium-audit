@@ -9,6 +9,8 @@ import sys
 import tempfile
 import unittest
 
+from test_audit import COLLECTION_COLUMNS, capture_fixture
+
 ROOT = Path(__file__).resolve().parents[1]
 RUNNER = ROOT / 'skills/class-code-assistant/scripts/audit.py'
 SLUG = 'juniper-spark-services'
@@ -41,6 +43,8 @@ def write_fixture(base):
                                  ('register', 'register.csv'), ('signin', 'signin.csv')]]
     case = dict(slug=SLUG, employer='Juniper Spark Services', audit_start='2025-07-07', audit_end='2026-07-05',
                 sources=sources, guide_source='guide',
+                governing_eligibility={'E-510': dict(reason='Synthetic electrical contractor field work',
+                                                    evidence=['guide', 'policy'])},
                 rule_refs={key: dict(sources=['policy'], citation='Synthetic test policy, first paragraph')
                            for key in ('office', 'governing', 'owner')},
                 reported={'C-110': '18234.56', 'E-510': '72819.43'},
@@ -51,15 +55,16 @@ def write_fixture(base):
                              pay='18234.56', reported_code='C-110', contractor=True,
                              reported_code_evidence=['register'], evidence=['register']),
                         dict(id='JS-O03', name='Elena Sato', role='owner', code=None, pay=None,
-                             off_register=True, election_valid=False, evidence=['register'])],
-                signin=[dict(person='JS-E29', date='2025-08-0' + str(i), evidence=['signin']) for i in range(4, 8)])
+                             off_register=True, election_status='unverified', evidence=['register'])],
+                signin=[dict(person='JS-E29', date='2025-08-0' + str(i), evidence=['signin']) for i in range(4, 8)],
+                **{name: [] for name in COLLECTION_COLUMNS if name not in ('people', 'signin')})
     write_case(base, case)
     return case
 
 
 def write_case(base, case, name='case.json'):
     path = base / name
-    path.write_text(json.dumps(case, indent=2) + '\n')
+    path.write_text(json.dumps(capture_fixture(case, base), indent=2) + '\n')
     return path
 
 
@@ -157,7 +162,7 @@ class Gate3ReuseTests(unittest.TestCase):
                 else:
                     bad['slug'] = 'juniper-incomplete'
                     if kind == 'source-file':
-                        bad['sources'][-1]['path'] = 'absent-signin.csv'
+                        next(s for s in bad['sources'] if s['id'] == 'signin')['path'] = 'absent-signin.csv'
                         expected = 'Missing source'
                     elif kind == 'people-field':
                         del bad['people']

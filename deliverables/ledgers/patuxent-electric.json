@@ -628,7 +628,8 @@
         "site-signin-log.csv",
         "interview-2",
         "guide"
-      ]
+      ],
+      "factual_question": "Confirm the reported absence of a filed election for Raymond Dunmore; if incorrect, provide the filed election and effective dates. Confirm his 118000.00 wages, personal wire-pulling and crew-leading duties, and 214 distinct sign-in dates from 2025-07-07 through 2026-07-03; identify corrections."
     },
     {
       "subject": "Curtis Bell / allowance PE-E02-travel",
@@ -639,7 +640,8 @@
         "field-notes.md",
         "interview-2",
         "guide"
-      ]
+      ],
+      "factual_question": "Confirm Curtis Bell received the 2600.00 travel allowance and had 40 out-of-town days; provide payment dates, purpose, expense documentation and corrected day counts."
     },
     {
       "subject": "Hector Ruiz / allowance PE-E03-travel",
@@ -650,7 +652,8 @@
         "field-notes.md",
         "interview-2",
         "guide"
-      ]
+      ],
+      "factual_question": "Confirm Hector Ruiz received the 2600.00 travel allowance and had 40 out-of-town days; provide payment dates, purpose, expense documentation and corrected day counts."
     },
     {
       "subject": "Aaron Weiss / allowance PE-E04-travel",
@@ -661,7 +664,8 @@
         "field-notes.md",
         "interview-2",
         "guide"
-      ]
+      ],
+      "factual_question": "Confirm Aaron Weiss received the 2600.00 travel allowance and had 40 out-of-town days; provide payment dates, purpose, expense documentation and corrected day counts."
     },
     {
       "subject": "Tyrone Banks / allowance PE-E05-travel",
@@ -672,7 +676,8 @@
         "field-notes.md",
         "interview-2",
         "guide"
-      ]
+      ],
+      "factual_question": "Confirm Tyrone Banks received the 1034.00 travel allowance and had 22 out-of-town days; provide payment dates, purpose, expense documentation and corrected day counts."
     },
     {
       "subject": "Kyle Brandt / allowance PE-E06-travel",
@@ -683,7 +688,8 @@
         "field-notes.md",
         "interview-2",
         "guide"
-      ]
+      ],
+      "factual_question": "Confirm Kyle Brandt received 390.00 with 0 recorded out-of-town days. What was the payment for? Provide payment dates, receipts or reimbursement support, and any corrected travel-day record."
     },
     {
       "subject": "Application decision",
@@ -805,5 +811,163 @@
       "retrieved_at": "2026-11-03T06:28:07.754231+00:00",
       "sha256": "69963d4e448a0a4f9fa2e327fd35bc184518c52b0c5c6986635614c5a59229b7"
     }
-  ]
+  ],
+  "input_controls": {
+    "completeness": {
+      "people": {
+        "status": "complete",
+        "checks": [
+          {
+            "source": "payroll-register.csv",
+            "columns": {
+              "id": "employee_id",
+              "name": "name",
+              "pay": "wages_paid"
+            }
+          }
+        ]
+      },
+      "signin": {
+        "status": "complete",
+        "checks": [
+          {
+            "source": "site-signin-log.csv",
+            "columns": {
+              "person": "employee_id",
+              "date": "date"
+            }
+          }
+        ]
+      },
+      "roofing": {
+        "status": "not_applicable",
+        "evidence": [
+          "business-description.md"
+        ]
+      },
+      "route_weeks": {
+        "status": "not_applicable",
+        "evidence": [
+          "business-description.md"
+        ]
+      },
+      "allowances": {
+        "status": "complete",
+        "checks": [
+          {
+            "source": "payroll-register.csv",
+            "columns": {
+              "person": "employee_id",
+              "amount": "travel_allowance_paid",
+              "days": "travel_days"
+            }
+          }
+        ]
+      },
+      "sub_invoices": {
+        "status": "not_applicable",
+        "evidence": [
+          "business-description.md"
+        ]
+      },
+      "certificates": {
+        "status": "not_applicable",
+        "evidence": [
+          "business-description.md"
+        ]
+      }
+    },
+    "owners": [
+      {
+        "id": "PE-E01",
+        "pay": "118000.00",
+        "off_register": false,
+        "field_work": true,
+        "election_status": "included",
+        "inclusion_evidence": [
+          "business-description.md"
+        ]
+      }
+    ],
+    "allowance_inputs": [
+      {
+        "id": "PE-E02-travel",
+        "person": "PE-E02",
+        "amount": "2600.00",
+        "days": 40,
+        "documented_reimbursement": false,
+        "evidence": [
+          "payroll-register.csv",
+          "field-notes.md"
+        ],
+        "basis": "uniform_daily",
+        "daily_rate": "65.00",
+        "basis_evidence": [
+          "field-notes.md"
+        ]
+      },
+      {
+        "id": "PE-E03-travel",
+        "person": "PE-E03",
+        "amount": "2600.00",
+        "days": 40,
+        "documented_reimbursement": false,
+        "evidence": [
+          "payroll-register.csv",
+          "field-notes.md"
+        ],
+        "basis": "uniform_daily",
+        "daily_rate": "65.00",
+        "basis_evidence": [
+          "field-notes.md"
+        ]
+      },
+      {
+        "id": "PE-E04-travel",
+        "person": "PE-E04",
+        "amount": "2600.00",
+        "days": 40,
+        "documented_reimbursement": false,
+        "evidence": [
+          "payroll-register.csv",
+          "field-notes.md"
+        ],
+        "basis": "uniform_daily",
+        "daily_rate": "65.00",
+        "basis_evidence": [
+          "field-notes.md"
+        ]
+      },
+      {
+        "id": "PE-E05-travel",
+        "person": "PE-E05",
+        "amount": "1034.00",
+        "days": 22,
+        "documented_reimbursement": false,
+        "evidence": [
+          "payroll-register.csv",
+          "field-notes.md"
+        ],
+        "basis": "uniform_daily",
+        "daily_rate": "47.00",
+        "basis_evidence": [
+          "field-notes.md"
+        ]
+      },
+      {
+        "id": "PE-E06-travel",
+        "person": "PE-E06",
+        "amount": "390.00",
+        "days": 0,
+        "documented_reimbursement": false,
+        "evidence": [
+          "payroll-register.csv",
+          "field-notes.md"
+        ]
+      }
+    ],
+    "governing_eligibility": null,
+    "time_records": null,
+    "split_inputs": []
+  }
 }

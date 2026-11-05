@@ -585,7 +585,8 @@
         "field-notes.md",
         "interview-2",
         "guide"
-      ]
+      ],
+      "factual_question": "Confirm July 2025–June 2026 receipts of 1284615.20 dine-in and 362410.85 off-site, total 1647026.05. These months include July 1–6, 2025 before the audit and omit July 1–5, 2026 within it: provide daily dining/catering receipts for those boundaries or an exact July 7, 2025–July 5, 2026 summary, with corrections and missing sales identified."
     },
     {
       "subject": "Catering crew / decision and call priority",
@@ -608,7 +609,8 @@
         "business-description.md",
         "guide",
         "interview-2"
-      ]
+      ],
+      "factual_question": "Provide Rosa Delacroix’s filed election and effective dates for the entire audit period. Confirm the reported omission from the payroll register and provide actual duties, any field work and remuneration; these facts and any additional exposure are currently unknown, not zero. Identify any other omitted owner or payment."
     }
   ],
   "rule_refs": {
@@ -714,5 +716,83 @@
       "retrieved_at": "2026-11-03T06:28:07.754231+00:00",
       "sha256": "69963d4e448a0a4f9fa2e327fd35bc184518c52b0c5c6986635614c5a59229b7"
     }
-  ]
+  ],
+  "input_controls": {
+    "completeness": {
+      "people": {
+        "status": "complete",
+        "checks": [
+          {
+            "source": "payroll-register.csv",
+            "columns": {
+              "id": "employee_id",
+              "name": "name",
+              "pay": "wages_paid"
+            }
+          }
+        ]
+      },
+      "signin": {
+        "status": "not_applicable",
+        "evidence": [
+          "business-description.md"
+        ]
+      },
+      "roofing": {
+        "status": "not_applicable",
+        "evidence": [
+          "business-description.md"
+        ]
+      },
+      "route_weeks": {
+        "status": "not_applicable",
+        "evidence": [
+          "business-description.md"
+        ]
+      },
+      "allowances": {
+        "status": "not_applicable",
+        "evidence": [
+          "business-description.md"
+        ]
+      },
+      "sub_invoices": {
+        "status": "not_applicable",
+        "evidence": [
+          "business-description.md"
+        ]
+      },
+      "certificates": {
+        "status": "not_applicable",
+        "evidence": [
+          "business-description.md"
+        ]
+      },
+      "receipts": {
+        "status": "complete",
+        "checks": [
+          {
+            "source": "gross-receipts.csv",
+            "columns": {
+              "dine_in": "dine_in_receipts",
+              "catering": "offsite_catering_receipts"
+            }
+          }
+        ]
+      }
+    },
+    "owners": [
+      {
+        "id": "LL-owner",
+        "pay": null,
+        "off_register": true,
+        "field_work": null,
+        "election_status": "unverified"
+      }
+    ],
+    "allowance_inputs": [],
+    "governing_eligibility": null,
+    "time_records": null,
+    "split_inputs": []
+  }
 }

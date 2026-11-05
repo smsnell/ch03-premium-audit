@@ -1,5 +1,7 @@
 # Implementation plan
 
+Corrective follow-up: owner accepted **Gate A** (individual source records, daily allowance caps and explicit owner uncertainty) and authorized **Gate B** (governing field eligibility, actual time/pay CG-07 splits and case-specific employer questions). The owner has now accepted Gate B and the completed reporting/judgment work, and authorized final checks, commit and push. Software acceptance is not audit sign-off. See `docs/final-acceptance.md`. See `docs/gate-a-verification.md` and `docs/gate-b-verification.md`. All six financial results and existing unresolved issues are preserved.
+
 Status: owner approved the revised plan, P1–P7 as provisional treatments, and the draft-output contract on 2026-11-03. Gates 1–3 are accepted for progression. G3 Complete was pushed as `3a39077`; Gate 4 integrated review and bounded fixes are accepted by the owner, with the final question-generator corrections and 45 passing regressions, authorized for G4 Complete. See `docs/gate4-verification.md` for results and the final revision capture limitation. This approval does not resolve employer open items or unknown owner amounts. No audit is signed off.
 
 ## Scope and evidence

@@ -1,6 +1,6 @@
 # Class Code and Premium Audit Assistant
 
-Reusable, agent-guided payroll classification for Linden Shore Mutual. Uses the company's guide and auditor decisions; does not set rates or quote premiums. Current scope: Gate 4 software/package accepted with final question regressions passing; completion verification is in `docs/gate4-verification.md`. Software acceptance remains separate from audit sign-off.
+Reusable, agent-guided payroll classification for Linden Shore Mutual. Uses the company's guide and auditor decisions; does not set rates or quote premiums. Current scope: Gates A and B and the completed reporting/judgment work are accepted by the owner. See `docs/final-acceptance.md` for final checks and release status. See `docs/gate-a-verification.md` for completeness, allowance and owner checks and `docs/gate-b-verification.md` for field eligibility, actual time/pay splits and factual questions. Software acceptance remains separate from audit sign-off.
 
 ## Setup
 
@@ -31,9 +31,9 @@ python3 skills/class-code-assistant/scripts/audit.py --case path/to/employer.jso
 python3 skills/class-code-assistant/scripts/audit.py --bundle path/to/all-six.json --output-dir .runs/replay-six
 ```
 
-The bundle is a JSON list of normalized cases or an object with a `cases` list. `--case` may also be repeated. Use a new output directory. The helper verifies source fingerprints and input contracts before generating `codes/<slug>.csv`, `audit-report.md`, `audit-questions.md`, `internal-decisions.md`, and `ledgers/<slug>.json`. Replaying saved cases verifies arithmetic; it does not satisfy fresh retrieval for a new audit run.
+The bundle is a JSON list of normalized cases or an object with a `cases` list. `--case` may also be repeated. Use a new output directory. The helper verifies source fingerprints, source-row reconciliation and input contracts before generating `codes/<slug>.csv`, `audit-report.md`, `audit-questions.md`, `internal-decisions.md`, and `ledgers/<slug>.json`. Replaying saved cases verifies arithmetic; it does not satisfy fresh retrieval for a new audit run.
 
-All CSVs must travel with the draft report/questions and linked internal decisions/ledgers. Employer questions ask for facts; internal decisions hold rule interpretation and treatment approvals. Confirmations must identify the employer, issue and confirmation kind, and cannot change another case or automatically approve an audit. Owner approval to implement provisional P1–P7 treatments is not employer confirmation. Missing owner remuneration remains unknown, never zero; calculations cannot grant final audit approval.
+All CSVs must travel with the draft report/questions and linked internal decisions/ledgers. Employer questions ask for facts; internal decisions hold rule interpretation and treatment approvals. Confirmations must identify the employer, issue and confirmation kind, and cannot change another case or automatically approve an audit. Owner approval to implement provisional P1–P7 treatments is not employer confirmation. Missing owner election evidence remains explicitly unverified; inclusion or exclusion needs separate supporting evidence. Missing owner remuneration remains unknown, never zero; calculations cannot grant final audit approval.
 
 ## Verification
 
@@ -46,10 +46,10 @@ Source checks and the requirements map are in `docs/gate1-verification.md`; Gate
 The six-case draft package is in `deliverables/`. After the fresh agent retrieval and normalization, its calculation command is:
 
 ```bash
-python3 skills/class-code-assistant/scripts/audit.py --bundle .runs/gate3/six-cases.json --output-dir .runs/gate3/replay-six
+python3 skills/class-code-assistant/scripts/audit.py --bundle .runs/gate-b/six-cases.json --output-dir .runs/gate-b/new-replay-six
 ```
 
-That local bundle and its fresh captures are ignored run artifacts. To rerun in a new checkout, use the live Skill invocation above to retrieve and normalize sources again; do not expect `.runs/` to be checked in. See `docs/gate3-verification.md` for exact result checks and limitations.
+The Gate B bundle extends the accepted Gate A migration with reviewed field eligibility and factual prompts. These are reviewed input-contract migrations of the existing Gate 3 captures, not a fresh retrieval. The original `.runs/gate3/six-cases.json` is preserved and intentionally fails the stricter contract. The replay bundles and their captures are ignored run artifacts. To rerun in a new checkout, use the live Skill invocation above to retrieve and normalize sources again; do not expect `.runs/` to be checked in. See `docs/gate3-verification.md` for exact result checks and limitations.
 
 ## Interview rule and source handling
 

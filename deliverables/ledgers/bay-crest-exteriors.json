@@ -744,7 +744,8 @@
         "crew-timesheets.csv",
         "payroll-register.csv",
         "interview-2"
-      ]
+      ],
+      "factual_question": "Confirm Rafael Duarte’s 15 distinct dates with positive roofing time in crew-timesheets.csv, including the listed dates from 2025-08-18 through 2026-05-27, his actual roofing/siding/gutter duties and wages of 47918.65; supply corrections or omitted dates."
     },
     {
       "subject": "Jamal Whitfield / actual crew work",
@@ -754,7 +755,8 @@
         "crew-timesheets.csv",
         "payroll-register.csv",
         "interview-2"
-      ]
+      ],
+      "factual_question": "Confirm Jamal Whitfield’s 9 distinct dates with positive roofing time in crew-timesheets.csv, including the listed dates from 2025-07-10 through 2026-04-21, his actual roofing/siding/gutter duties and wages of 46205.10; supply corrections or omitted dates."
     },
     {
       "subject": "Teresa Lindqvist / governing-code transfer",
@@ -767,7 +769,8 @@
         "application.md",
         "field-notes.md",
         "interview-2"
-      ]
+      ],
+      "factual_question": "Confirm Teresa Lindqvist (BC-E09), called “Therese” in the interview, made the 9 listed site visits from 2025-07-24 through 2026-07-01 to measure houses, and earned 68430.90. Identify missing visits or other duties; confirm whether “Baycrest Interiors” refers to Bay Crest Exteriors."
     },
     {
       "subject": "Philip Crestwood / reported owner exclusion",
@@ -777,7 +780,8 @@
         "business-description.md",
         "guide",
         "interview-2"
-      ]
+      ],
+      "factual_question": "Provide Philip Crestwood’s filed election and effective dates for the entire audit period. Confirm the reported omission from the payroll register and provide actual duties, any field work and remuneration; these facts and any additional exposure are currently unknown, not zero. Identify any other omitted owner or payment."
     }
   ],
   "rule_refs": {
@@ -919,5 +923,100 @@
       "retrieved_at": "2026-11-03T06:28:07.754231+00:00",
       "sha256": "69963d4e448a0a4f9fa2e327fd35bc184518c52b0c5c6986635614c5a59229b7"
     }
-  ]
+  ],
+  "input_controls": {
+    "completeness": {
+      "people": {
+        "status": "complete",
+        "checks": [
+          {
+            "source": "payroll-register.csv",
+            "columns": {
+              "id": "employee_id",
+              "name": "name",
+              "pay": "wages_paid"
+            }
+          }
+        ]
+      },
+      "signin": {
+        "status": "complete",
+        "checks": [
+          {
+            "source": "site-signin-log.csv",
+            "columns": {
+              "person": "employee_id",
+              "date": "date"
+            }
+          }
+        ]
+      },
+      "roofing": {
+        "status": "complete",
+        "checks": [
+          {
+            "source": "crew-timesheets.csv",
+            "columns": {
+              "person": "employee_id",
+              "date": "date",
+              "hours": "hours"
+            },
+            "work_column": "work_type"
+          }
+        ]
+      },
+      "route_weeks": {
+        "status": "not_applicable",
+        "evidence": [
+          "business-description.md"
+        ]
+      },
+      "allowances": {
+        "status": "not_applicable",
+        "evidence": [
+          "business-description.md"
+        ]
+      },
+      "sub_invoices": {
+        "status": "not_applicable",
+        "evidence": [
+          "business-description.md"
+        ]
+      },
+      "certificates": {
+        "status": "not_applicable",
+        "evidence": [
+          "business-description.md"
+        ]
+      }
+    },
+    "owners": [
+      {
+        "id": "BC-owner",
+        "pay": null,
+        "off_register": true,
+        "field_work": null,
+        "election_status": "unverified"
+      }
+    ],
+    "allowance_inputs": [],
+    "governing_eligibility": {
+      "R-310": {
+        "reason": "CG-11 roofing; business description establishes roof replacement at customer buildings.",
+        "evidence": [
+          "guide",
+          "business-description.md"
+        ]
+      },
+      "R-320": {
+        "reason": "CG-12 siding/gutters; business description establishes exterior installation at customer buildings.",
+        "evidence": [
+          "guide",
+          "business-description.md"
+        ]
+      }
+    },
+    "time_records": null,
+    "split_inputs": []
+  }
 }

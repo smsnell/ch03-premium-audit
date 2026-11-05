@@ -29,7 +29,7 @@ class Gate4Tests(unittest.TestCase):
 
     def bundle_run(self, cases, name):
         path = self.base / (name + '.json')
-        path.write_text(json.dumps({'cases': cases}))
+        path.write_text(json.dumps({'cases': [fixtures.capture_fixture(case, self.base) for case in cases]}))
         output = self.base / name
         result = cli(self.base, output, '--bundle', str(path))
         return result, output
@@ -108,7 +108,7 @@ class Gate4Tests(unittest.TestCase):
         case['people'][0].update(role='roofing', code='R-310')
         case['reported'] = {'R-310': '100.00'}
         case['roofing'] = [dict(row, hours='1') for row in self.site('a', 14)]
-        case['allowances'] = [dict(id='travel', person='a', amount='60.00', days=1,
+        case['allowances'] = [dict(id='travel', person='a', amount='60.00', days=1, date='2025-08-01',
                                   documented_reimbursement=False, evidence=['records'])]
         ledger = self.run_case(case)
         self.assertEqual({'R-320': '113.00'}, ledger['totals'])
@@ -121,7 +121,7 @@ class Gate4Tests(unittest.TestCase):
         case['route_weeks'] = [dict(person='a', start=start, pay='50.00', ride_dates=rides,
                                     evidence=['records']) for start, rides in
                                [('2025-07-07', []), ('2025-07-14', ['2025-07-14', '2025-07-15'])]]
-        row = dict(id='travel', person='a', amount='60.00', days=1,
+        row = dict(id='travel', person='a', amount='60.00', days=1, date='2025-08-01',
                    documented_reimbursement=False, evidence=['records'])
         case['allowances'] = [row]
         for fields in ({}, {'code': 'T-610'}, {'allocation_evidence': ['records']},
@@ -140,14 +140,14 @@ class Gate4Tests(unittest.TestCase):
         case['people'][1]['name'] = case['people'][0]['name']
         case['reported'] = {'R-310': '100.00', 'E-510': '200.00'}
         case['roofing'] = [dict(row, hours='1') for row in self.site('a', 14)]
-        case['allowances'] = [dict(id='travel', person='b', amount='60.00', days=1,
+        case['allowances'] = [dict(id='travel', person='b', amount='60.00', days=1, date='2025-08-01',
                                   documented_reimbursement=False, evidence=['records'])]
         self.assertEqual({'R-320': '100.00', 'E-510': '213.00'}, self.run_case(case)['totals'])
 
     def test_included_field_owner_rejects_clerical_destination(self):
         case = self.case()
         case['people'] = [self.person('a', '100.00', 'owner', 'C-110',
-                                     election_valid=False, field_work=True)]
+                                     election_status='included', inclusion_evidence=['records'], field_work=True)]
         with self.assertRaises(fixtures.audit.InputError):
             self.run_case(case)
         case['people'][0]['code'] = 'E-510'

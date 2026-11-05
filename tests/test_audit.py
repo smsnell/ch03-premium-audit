@@ -1,5 +1,6 @@
 """Synthetic Gate 2 boundaries; fixtures are not employer evidence."""
 import contextlib
+import csv
 from copy import deepcopy
 from datetime import date, timedelta
 from decimal import Decimal
@@ -17,6 +18,69 @@ audit = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(audit)
 
 
+COLLECTION_COLUMNS = {
+    'people': ('id', 'name', 'pay'), 'signin': ('person', 'date'),
+    'roofing': ('person', 'date', 'hours'), 'route_weeks': ('person', 'start', 'pay'),
+    'allowances': ('person', 'amount', 'days'),
+    'sub_invoices': ('id', 'name', 'date', 'amount'),
+    'certificates': ('name', 'start', 'end'),
+}
+
+
+def capture_fixture(case, base):
+    """Capture deliberately constructed synthetic input, before mutation assertions."""
+    case.setdefault('completeness', {})
+    stem = case['slug'].replace('/', '_')
+    case['sources'] = [s for s in case['sources'] if not s['id'].startswith('fixture-')]
+    for name, fields in COLLECTION_COLUMNS.items():
+        if name not in case:
+            continue  # Preserve deliberate missing-collection negatives.
+        rows = case[name]
+        if not rows:
+            case['completeness'][name] = dict(status='not_applicable', evidence=['records' if
+                any(s['id'] == 'records' for s in case['sources']) else 'policy'])
+            continue
+        if name == 'allowances' and any('date' in row for row in rows):
+            fields += ('date',)
+        sid = 'fixture-' + name
+        path = base / (stem + '-' + name + '.csv')
+        with path.open('w', newline='') as stream:
+            writer = csv.DictWriter(stream, fieldnames=fields, extrasaction='ignore')
+            writer.writeheader()
+            writer.writerows(row for row in rows if name != 'people' or not row.get('off_register'))
+        case['sources'].append(dict(id=sid, path=path.name,
+            sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
+            url='https://example.invalid/' + path.name, retrieved_at='2026-11-03T12:00:00Z'))
+        case['completeness'][name] = dict(status='complete', checks=[dict(source=sid,
+            columns={field: field for field in fields})])
+        if name == 'route_weeks':
+            sid = 'fixture-route-log'
+            path = base / (stem + '-route-log.csv')
+            with path.open('w', newline='') as stream:
+                writer = csv.DictWriter(stream, fieldnames=('person', 'date'))
+                writer.writeheader()
+                writer.writerows(dict(person=row['person'], date=d) for row in rows
+                                 for d in dict.fromkeys(row.get('ride_dates', [])))
+            case['sources'].append(dict(id=sid, path=path.name,
+                sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
+                url='https://example.invalid/' + path.name, retrieved_at='2026-11-03T12:00:00Z'))
+            case['completeness'][name]['route_log'] = dict(source=sid,
+                columns=dict(person='person', date='date'))
+    if 'receipts' in case:
+        path = base / (stem + '-receipts.csv')
+        with path.open('w', newline='') as stream:
+            writer = csv.DictWriter(stream, fieldnames=('gross', 'catering'), extrasaction='ignore')
+            writer.writeheader()
+            writer.writerow(case['receipts'])
+        sid = 'fixture-receipts'
+        case['sources'].append(dict(id=sid, path=path.name,
+            sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
+            url='https://example.invalid/' + path.name, retrieved_at='2026-11-03T12:00:00Z'))
+        case['completeness']['receipts'] = dict(status='complete', checks=[dict(source=sid,
+            columns=dict(gross='gross', catering='catering'))])
+    return case
+
+
 class AuditTests(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
@@ -24,8 +88,8 @@ class AuditTests(unittest.TestCase):
         self.base = Path(self.tmp.name)
         guide = '\n'.join('**' + ref + '. ' + code + ' Synthetic description.**' for code, ref in {
             'C-110': 'CG-04', 'R-310': 'CG-11', 'R-320': 'CG-12', 'H-420': 'CG-15',
-            'E-510': 'CG-21', 'T-610': 'CG-31', 'F-710': 'CG-41', 'F-720': 'CG-42'}.items())
-        (self.base / 'guide.md').write_text(guide)
+            'E-510': 'CG-21', 'M-830': 'CG-22', 'T-610': 'CG-31', 'F-710': 'CG-41', 'F-720': 'CG-42'}.items())
+        (self.base / 'guide.md').write_text(guide + '\n**CG-07. Division of payroll.** Synthetic actual time records required.\n')
         (self.base / 'records.txt').write_text('Synthetic records for focused software tests only.')
         sources = []
         for sid, filename in [('guide', 'guide.md'), ('records', 'records.txt')]:
@@ -34,16 +98,19 @@ class AuditTests(unittest.TestCase):
         self.template = dict(slug='synthetic', employer='Synthetic Employer', audit_start='2025-07-07', audit_end='2026-07-05',
             sources=sources, guide_source='guide', rule_refs={key: dict(sources=['records'], citation='Synthetic test policy') for key in (
                 'roofing', 'office', 'governing', 'owner', 'allowance', 'subcontractors', 'dispatcher', 'catering')},
-            reported={'C-110': '100.00'}, people=[self.person('a', '100.00', 'office', 'C-110')])
+            reported={'C-110': '100.00'}, people=[self.person('a', '100.00', 'office', 'C-110')],
+            governing_eligibility={code: dict(reason='Synthetic contractor field duties', evidence=['guide', 'records'])
+                                   for code in ('E-510', 'H-420', 'R-310', 'R-320')},
+            **{name: [] for name in COLLECTION_COLUMNS if name != 'people'})
 
     def person(self, pid, pay, role, code, **extra):
         return dict(id=pid, name='Synthetic person ' + pid, pay=pay, role=role, code=code, evidence=['records'], **extra)
 
     def case(self):
-        return deepcopy(self.template)
+        return capture_fixture(deepcopy(self.template), self.base)
 
     def run_case(self, case):
-        return audit.Audit(case, self.base).run()
+        return audit.Audit(capture_fixture(case, self.base), self.base).run()
 
     def site(self, pid, count):
         return [dict(person=pid, date=str(date(2025, 7, 7) + timedelta(days=i)), evidence=['records']) for i in range(count)]
@@ -148,14 +215,14 @@ class AuditTests(unittest.TestCase):
     def test_included_field_owner_fixed_basis(self):
         c = self.case()
         c['people'] = [self.person('a', '100.00', 'owner', 'E-510', reported_code='C-110',
-                                   reported_code_evidence=['records'], election_valid=False, field_work=True)]
+                                   reported_code_evidence=['records'], election_status='included', inclusion_evidence=['records'], field_work=True)]
         result = self.run_case(c)
         self.assertEqual({'E-510': '63700.00'}, result['totals'])
         self.assertEqual('63600.00', result['net_adjustment'])
 
     def test_valid_owner_election_with_provisional_precedence(self):
         c = self.case()
-        c['people'].append(self.person('owner', None, 'owner', 'E-510', election_valid=True, off_register=True,
+        c['people'].append(self.person('owner', None, 'owner', 'E-510', election_status='excluded', off_register=True,
                           election_start='2025-07-01', election_end='2026-07-06', election_evidence=['records']))
         result = self.run_case(c)
         self.assertEqual({'C-110': '100.00'}, result['totals'])
@@ -164,14 +231,14 @@ class AuditTests(unittest.TestCase):
 
     def test_partial_owner_election_fails(self):
         c = self.case()
-        c['people'].append(self.person('owner', None, 'owner', 'E-510', election_valid=True, off_register=True,
+        c['people'].append(self.person('owner', None, 'owner', 'E-510', election_status='excluded', off_register=True,
                           election_start='2025-07-01', election_end='2026-01-31', election_evidence=['records']))
         with self.assertRaises(audit.InputError):
             self.run_case(c)
 
     def test_unknown_off_register_owner_not_zero_or_63700(self):
         c = self.case()
-        c['people'].append(self.person('owner', None, 'owner', None, election_valid=False, off_register=True))
+        c['people'].append(self.person('owner', None, 'owner', None, election_status='unverified', off_register=True))
         result = self.run_case(c)
         self.assertIsNone(result['issues'][0]['amount'])
         self.assertEqual('100.00', result['baseline'])
@@ -181,12 +248,15 @@ class AuditTests(unittest.TestCase):
             self.run_case(c)
 
     def test_allowance_cap_excess_zero_day_and_documented_expense(self):
-        for amount, days, documented, extra in [('1034.00', 22, False, '0.00'), ('1754.00', 22, False, '720.00'),
+        for amount, days, documented, extra in [('1034.00', 22, False, '0.00'), ('1753.84', 22, False, '719.84'),
                                                  ('390.00', 0, False, '390.00'), ('390.00', 0, True, '0.00')]:
             with self.subTest(amount=amount, days=days, documented=documented):
                 c = self.case()
                 row = dict(id='travel', person='a', amount=amount, days=days,
                            documented_reimbursement=documented, evidence=['records'])
+                if days:
+                    row.update(basis='uniform_daily', daily_rate=audit.fmt(Decimal(amount) / days),
+                               basis_evidence=['records'])
                 if documented:
                     row['reimbursement_evidence'] = ['records']
                 c['allowances'] = [row]
@@ -300,7 +370,7 @@ class AuditTests(unittest.TestCase):
             with self.assertRaises(audit.InputError):
                 self.run_case(c)
         del c['sub_invoices'][0]['date']
-        with self.assertRaises(KeyError):
+        with self.assertRaises((KeyError, audit.InputError)):
             self.run_case(c)
 
     def test_invalid_money_unknown_employee_code_and_missing_records_fail(self):
@@ -311,7 +381,7 @@ class AuditTests(unittest.TestCase):
         c = self.case(); c['people'][0]['code'] = 'Z-000'; variants.append(c)
         c = self.case(); c['people'][0]['role'] = 'unmapped'; variants.append(c)
         c = self.case(); c['people'][0]['pay'] = None; variants.append(c)
-        c = self.case(); c['people'][0]['contractor'] = True; variants.append(c)
+        c = self.case(); del c['signin']; variants.append(c)
         c = self.case(); c['signin'] = [dict(person='unknown', date='2025-07-07', evidence=['records'])]; variants.append(c)
         c = self.case(); c['people'][0]['evidence'] = []; variants.append(c)
         c = self.case(); c['sources'][0]['sha256'] = 'changed'; variants.append(c)

@@ -2042,7 +2042,8 @@
         "route-log.csv",
         "payroll-register.csv",
         "business-description.md"
-      ]
+      ],
+      "factual_question": "Confirm Irene Voss’s 52-week payroll totals 36511.80, her bookkeeping duties and the absence of any driver or rider entries; identify omitted rides or other duties."
     },
     {
       "subject": "Lena Ortiz / weekly conclusion",
@@ -2053,7 +2054,8 @@
         "route-log.csv",
         "field-notes.md",
         "interview-2"
-      ]
+      ],
+      "factual_question": "Confirm Lena Ortiz’s complete 52-week payroll of 47442.20 and route-log counts: 21 weeks with 0 ride days, 6 with 1, 21 with 2 and 4 with 3. Confirm every ride date and any missing weeks or duties; distinguish the later 2026-07-20 observation from audit-period rides."
     },
     {
       "subject": "Paul Haskins / weekly conclusion",
@@ -2064,7 +2066,8 @@
         "route-log.csv",
         "field-notes.md",
         "interview-2"
-      ]
+      ],
+      "factual_question": "Confirm Paul Haskins’s complete 52-week payroll of 46675.20 and route-log counts: 50 weeks with 0 ride days and 2 with 1 (weeks beginning 2025-12-01 and 2026-03-23). Identify omitted rides, weeks or other duties."
     },
     {
       "subject": "Application decision",
@@ -2086,7 +2089,8 @@
         "business-description.md",
         "guide",
         "interview-2"
-      ]
+      ],
+      "factual_question": "Provide Gloria Rhee’s filed election and effective dates for the entire audit period. Confirm the reported omission from the payroll register and provide actual duties, any field work and remuneration; these facts and any additional exposure are currently unknown, not zero. Identify any other omitted owner or payment."
     }
   ],
   "rule_refs": {
@@ -2212,5 +2216,85 @@
       "retrieved_at": "2026-11-03T06:28:07.754231+00:00",
       "sha256": "69963d4e448a0a4f9fa2e327fd35bc184518c52b0c5c6986635614c5a59229b7"
     }
-  ]
+  ],
+  "input_controls": {
+    "completeness": {
+      "people": {
+        "status": "complete",
+        "checks": [
+          {
+            "source": "payroll-register.csv",
+            "columns": {
+              "id": "employee_id",
+              "name": "name",
+              "pay": "wages_paid"
+            }
+          }
+        ]
+      },
+      "signin": {
+        "status": "not_applicable",
+        "evidence": [
+          "business-description.md"
+        ]
+      },
+      "roofing": {
+        "status": "not_applicable",
+        "evidence": [
+          "business-description.md"
+        ]
+      },
+      "route_weeks": {
+        "status": "complete",
+        "checks": [
+          {
+            "source": "weekly-payroll.csv",
+            "columns": {
+              "person": "employee_id",
+              "start": "week_start",
+              "pay": "gross_pay"
+            }
+          }
+        ],
+        "route_log": {
+          "source": "route-log.csv",
+          "columns": {
+            "person": "ride_along_id",
+            "date": "date"
+          }
+        }
+      },
+      "allowances": {
+        "status": "not_applicable",
+        "evidence": [
+          "business-description.md"
+        ]
+      },
+      "sub_invoices": {
+        "status": "not_applicable",
+        "evidence": [
+          "business-description.md"
+        ]
+      },
+      "certificates": {
+        "status": "not_applicable",
+        "evidence": [
+          "business-description.md"
+        ]
+      }
+    },
+    "owners": [
+      {
+        "id": "AC-owner",
+        "pay": null,
+        "off_register": true,
+        "field_work": null,
+        "election_status": "unverified"
+      }
+    ],
+    "allowance_inputs": [],
+    "governing_eligibility": null,
+    "time_records": null,
+    "split_inputs": []
+  }
 }

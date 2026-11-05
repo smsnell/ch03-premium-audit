@@ -179,7 +179,8 @@
         "field-notes.md",
         "guide",
         "interview-2",
-        "site-signin-log.csv"
+        "site-signin-log.csv",
+        "subcontractor-payments.csv"
       ],
       "reason": "11 unique in-period site days; entire pay to governing field code before office transfers (P2)"
     },
@@ -416,7 +417,8 @@
         "field-notes.md",
         "guide",
         "interview-2",
-        "site-signin-log.csv"
+        "site-signin-log.csv",
+        "subcontractor-payments.csv"
       ],
       "reason": "11 unique in-period site days; entire pay to governing field code before office transfers (P2)"
     },
@@ -602,7 +604,8 @@
         "field-notes.md",
         "guide",
         "interview-2",
-        "site-signin-log.csv"
+        "site-signin-log.csv",
+        "subcontractor-payments.csv"
       ]
     },
     {
@@ -854,7 +857,8 @@
         "payroll-register.csv",
         "field-notes.md",
         "interview-2"
-      ]
+      ],
+      "factual_question": "Confirm Marissa Gale’s 4 distinct site dates (2025-07-24, 2026-01-16, 2026-03-24 and 2026-04-21), measuring duties and wages of 71250.45; identify omitted visits or other duties."
     },
     {
       "subject": "Dana Whitcomb / office day count",
@@ -865,7 +869,8 @@
         "payroll-register.csv",
         "field-notes.md",
         "interview-2"
-      ]
+      ],
+      "factual_question": "Confirm Dana Whitcomb’s 11 distinct site dates from 2025-09-17 through 2026-06-23 in site-signin-log.csv, material/paperwork deliveries and inspector meetings, and wages of 59840.70; identify omitted visits or other duties."
     },
     {
       "subject": "Helen Ostrow / office day count",
@@ -898,7 +903,8 @@
         "insurance-certificates.csv",
         "interview-2",
         "guide"
-      ]
+      ],
+      "factual_question": "Provide evidence whether Kent Island Roofing and Kent Island Roofing & Siding LLC are the same legal entity. Confirm roofing payments SV-KEN-01 14300.00 on 2025-09-12, SV-KEN-02 19880.45 on 2026-03-20 and SV-KEN-03 11765.20 on 2026-05-08. Authenticate certificate MD-WC-517736 ending 2026-01-31 and provide any renewal or other coverage evidence through 2026-07-05, including any coverage gaps."
     },
     {
       "subject": "Tidewater Drywall / SV-TID-01",
@@ -987,7 +993,8 @@
         "business-description.md",
         "guide",
         "interview-2"
-      ]
+      ],
+      "factual_question": "Provide Martin Severn’s filed election and effective dates for the entire audit period. Confirm the reported omission from the payroll register and provide actual duties, any field work and remuneration; these facts and any additional exposure are currently unknown, not zero. Identify any other omitted owner or payment."
     }
   ],
   "rule_refs": {
@@ -1146,5 +1153,108 @@
       "retrieved_at": "2026-11-03T06:28:07.754231+00:00",
       "sha256": "69963d4e448a0a4f9fa2e327fd35bc184518c52b0c5c6986635614c5a59229b7"
     }
-  ]
+  ],
+  "input_controls": {
+    "completeness": {
+      "people": {
+        "status": "complete",
+        "checks": [
+          {
+            "source": "payroll-register.csv",
+            "columns": {
+              "id": "employee_id",
+              "name": "name",
+              "pay": "wages_paid"
+            }
+          }
+        ]
+      },
+      "signin": {
+        "status": "complete",
+        "checks": [
+          {
+            "source": "site-signin-log.csv",
+            "columns": {
+              "person": "employee_id",
+              "date": "date"
+            }
+          }
+        ]
+      },
+      "roofing": {
+        "status": "not_applicable",
+        "evidence": [
+          "business-description.md"
+        ]
+      },
+      "route_weeks": {
+        "status": "not_applicable",
+        "evidence": [
+          "business-description.md"
+        ]
+      },
+      "allowances": {
+        "status": "not_applicable",
+        "evidence": [
+          "business-description.md"
+        ]
+      },
+      "sub_invoices": {
+        "status": "complete",
+        "checks": [
+          {
+            "source": "subcontractor-payments.csv",
+            "columns": {
+              "id": "invoice",
+              "name": "subcontractor",
+              "date": "date",
+              "amount": "amount_paid"
+            }
+          }
+        ]
+      },
+      "certificates": {
+        "status": "complete",
+        "checks": [
+          {
+            "source": "insurance-certificates.csv",
+            "columns": {
+              "name": "subcontractor",
+              "start": "coverage_from",
+              "end": "coverage_to"
+            }
+          }
+        ]
+      }
+    },
+    "owners": [
+      {
+        "id": "SH-owner",
+        "pay": null,
+        "off_register": true,
+        "field_work": null,
+        "election_status": "unverified"
+      }
+    ],
+    "allowance_inputs": [],
+    "governing_eligibility": {
+      "H-420": {
+        "reason": "CG-15 homebuilding; business description establishes framing, drywall, finish carpentry and site labor.",
+        "evidence": [
+          "guide",
+          "business-description.md"
+        ]
+      },
+      "R-310": {
+        "reason": "CG-11 roofing; field notes and subcontractor payments establish roofing performed on the building projects.",
+        "evidence": [
+          "guide",
+          "field-notes.md",
+          "subcontractor-payments.csv"
+        ]
+      }
+    },
+    "time_records": null,
+    "split_inputs": []
+  }
 }
